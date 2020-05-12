@@ -1,0 +1,83 @@
+.applicant, .performer {
+  -fx-cursor: hand;
+  -fx-font-weight: bold;
+  -fx-font-size: 15pt;
+  -fx-wrap-text: true;
+  -fx-text-fill: blue;
+}
+
+.applicant {
+  -fx-padding: 10 0 0 0;
+}
+
+.performer {
+  -fx-padding: 10 0 10 0;
+}
+
+.applicant:hover, .performer:hover {
+  -fx-text-fill: red;
+}
+
+.chatScroll {
+  -fx-pref-height: 400;
+}
+
+.sendComment {
+  -fx-max-height: 99999;
+}
+
+.commentTextArea {
+  -fx-max-height: 50;
+  -fx-min-height: 50;
+}
+
+.FXRequest.reason {
+  -fx-wrap-text: true;
+  -fx-font-weight: bold;
+  -fx-font-size: 13pt;
+}
+
+.statusbar {
+  -fx-spacing: 20;
+  -fx-padding: 10 0 0 0;
+}
+
+.chat {
+  -fx-spacing: 10;
+  -fx-padding: 5 5 5 5;
+}
+
+.comment-date {
+  -fx-font-weight: bold;
+  -fx-padding: 15 5 5 0;
+}
+
+.request-comment {
+  -fx-spacing: 5;
+  -fx-border-width: 1;
+  -fx-border-style: solid;
+  -fx-border-color: gray;
+  -fx-border-radius: 10;
+  -fx-max-width: 400px;
+}
+
+.request-comment .label {
+  -fx-padding: 10 10 10 10;
+  -fx-wrap-text: true;
+}
+
+.client-comment-box {
+  -fx-alignment: center-left;
+}
+
+.my-comment-box {
+  -fx-alignment: center-right;
+}
+
+.client-comment {
+  -fx-background-color: aliceblue;
+}
+
+.my-comment {
+  -fx-background-color: bisque;
+}

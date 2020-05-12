@@ -1,0 +1,15 @@
+.store {
+  -fx-spacing: 10;
+  -fx-padding: 10;
+}
+
+.currency-label {
+  -fx-text-fill: blue;
+  -fx-cursor: hand;
+  -fx-font-weight: bold;
+  -fx-font-size: 12pt;
+}
+
+.currency-label:hover {
+  -fx-text-fill: red;
+}

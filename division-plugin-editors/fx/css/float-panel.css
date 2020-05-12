@@ -1,0 +1,52 @@
+.FloatPanel {
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-width: 1;
+  -fx-border-radius: 5;
+  -fx-padding: 5;
+  -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+.FloatPanel.split-pane {
+  -fx-background-color: rgba(0, 0, 0, 0.2);
+}
+
+.FloatPanel.headLabel {
+  -fx-background-color: gainsboro;
+  -fx-border-width: 0;
+  -fx-font-size: 10pt;
+}
+
+.FloatPanel.header {
+  -fx-background-color: gainsboro;
+  -fx-padding: 2;
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-radius: 5 5 0 0;
+  -fx-border-width: 1 1 0 1;
+  -fx-background-radius: 5 5 0 0;
+}
+
+.FloatPanel.fixfloat {
+  -fx-min-width:  16;
+  -fx-max-width:  16;
+  -fx-min-height: 16;
+  -fx-max-height: 16;
+  -fx-cursor: default;
+  
+  -fx-border-width: 1;
+  -fx-border-color: #687e51;
+  -fx-border-radius: 3;
+  -fx-focus-traversable: false;
+}
+
+.FloatPanel.fixfloat:fix {
+  -fx-background-color: rgba(0, 0, 0, 0.2);
+}
+
+.FloatPanel.buttonBox {
+  -fx-border-width: 0;
+  -fx-background-color: gainsboro;
+  -fx-text-alignment: right;
+  -fx-padding: 0;
+}

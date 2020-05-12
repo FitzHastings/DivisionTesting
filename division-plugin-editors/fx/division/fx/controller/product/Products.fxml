@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import division.fx.border.titleborder.*?>
+<?import division.fx.table.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane fx:id="rootSplit" orientation="VERTICAL" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <items>
+      <Accordion fx:id="accordion">
+        <panes>
+          <TitledPane fx:id="productDescription" text="Описание">
+               <content>
+                  <VBox />
+               </content></TitledPane>
+          <TitledPane fx:id="productDocuments" text="Документооборот">
+               <content>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: inherit;">
+                     <children>
+                        <TitleBorderPane title="СТАРТ" HBox.hgrow="ALWAYS">
+                           <center>
+                              <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ToolBar orientation="VERTICAL" HBox.hgrow="NEVER">
+                                       <items>
+                                          <Button fx:id="startAddButton" mnemonicParsing="false" styleClass="addToolButton" />
+                                          <Button fx:id="startRemoveButton" mnemonicParsing="false" styleClass="removeToolButton" />
+                                       </items>
+                                    </ToolBar>
+                                    <FXDivisionTable fx:id="startTable" HBox.hgrow="ALWAYS">
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy></FXDivisionTable>
+                                 </children>
+                              </HBox>
+                           </center>
+                        </TitleBorderPane>
+                        <TitleBorderPane title="ОТГРУЗКА" HBox.hgrow="ALWAYS">
+                           <center>
+                              <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ToolBar orientation="VERTICAL" HBox.hgrow="NEVER">
+                                       <items>
+                                          <Button fx:id="dispatchAddButton" mnemonicParsing="false" styleClass="addToolButton" />
+                                          <Button fx:id="dispatchRemoveButton" mnemonicParsing="false" styleClass="removeToolButton" />
+                                       </items>
+                                    </ToolBar>
+                                    <FXDivisionTable fx:id="dispatchTable" HBox.hgrow="ALWAYS">
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy></FXDivisionTable>
+                                 </children>
+                              </HBox>
+                           </center>
+                        </TitleBorderPane>
+                        <TitleBorderPane title="ОПЛАТА" HBox.hgrow="ALWAYS">
+                           <center>
+                              <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ToolBar orientation="VERTICAL" HBox.hgrow="NEVER">
+                                       <items>
+                                          <Button fx:id="payAddButton" mnemonicParsing="false" styleClass="addToolButton" />
+                                          <Button fx:id="payRemoveButton" mnemonicParsing="false" styleClass="removeToolButton" />
+                                       </items>
+                                    </ToolBar>
+                                    <FXDivisionTable fx:id="payTable" HBox.hgrow="ALWAYS">
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy></FXDivisionTable>
+                                 </children>
+                              </HBox>
+                           </center>
+                        </TitleBorderPane>
+                     </children>
+                  </HBox>
+               </content></TitledPane>
+          <TitledPane fx:id="productCostPolitic" text="Политика цен">
+               <content>
+                  <VBox />
+               </content></TitledPane>
+        </panes>
+      </Accordion>
+   </items>
+</SplitPane>

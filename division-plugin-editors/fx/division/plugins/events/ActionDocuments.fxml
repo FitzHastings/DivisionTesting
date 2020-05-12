@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language groovy?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import division.fx.border.titleborder.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane prefHeight="471.0" prefWidth="1000.0" stylesheets="@ActionDocuments.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <SplitPane fx:id="split" dividerPositions="0.4218436873747495" BorderPane.alignment="CENTER">
+         <items>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ToolBar prefHeight="40.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                    <items>
+                        <SplitMenuButton fx:id="addButton" mnemonicParsing="false" text="Создать">
+                          <items>
+                              <CustomMenuItem fx:id="addAction" mnemonicParsing="false" text="Событие">
+                                 <content>
+                                    <Label styleClass="action-add-button" text="Событие" />
+                                 </content>
+                              </CustomMenuItem>
+                              <CustomMenuItem fx:id="addDocument" mnemonicParsing="false" text="Событие">
+                                 <content>
+                                    <Label styleClass="document-add-button" text="Документ" />
+                                 </content>
+                              </CustomMenuItem>
+                              <CustomMenuItem fx:id="addTemplate" mnemonicParsing="false" text="Событие">
+                                 <content>
+                                    <Label styleClass="template-item-add-button" text="Печатную форму" />
+                                 </content>
+                              </CustomMenuItem>
+                          </items>
+                        </SplitMenuButton>
+                        <Button fx:id="remove" layoutX="92.0" layoutY="10.0" mnemonicParsing="false" text="X">
+                           <styleClass>
+                              <String fx:value="remove-button" />
+                              <String fx:value="tool-button" />
+                           </styleClass>
+                        </Button>
+                    </items>
+                  </ToolBar>
+                  <Accordion fx:id="accordion" VBox.vgrow="ALWAYS">
+                    <panes>
+                      <TitledPane fx:id="buhPane" text="Бухгалтерские">
+                           <content>
+                              <TreeView fx:id="buhTree" showRoot="false" styleClass="action-tree">
+                                <root>
+                                  <TreeItem expanded="true">
+                                    <value>События</value>
+                                    <children>
+                                      
+                                                                          <TreeItem expanded="true" value=" ">
+                                        <graphic>
+                                                <Label styleClass="action" text="СТАРТ" />
+                                             </graphic>
+                                        <children>
+                                          
+                                                                              <TreeItem expanded="true" value="">
+                                            <graphic>
+                                              <Label styleClass="document" text="Счёт" />
+                                            </graphic>
+                                            <children>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="script" text="Скрипт" />
+                                                         </graphic>
+                                              </TreeItem>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="template" text="Печатные формы" />
+                                                         </graphic>
+                                                <children>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Детализированный счёт" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Общий счёт" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                </children>
+                                              </TreeItem>
+                                            </children>
+                                          </TreeItem>
+                                          
+                                                                              <TreeItem expanded="true" value="">
+                                            <graphic>
+                                              <Label styleClass="document" text="Заказ-наряд" />
+                                            </graphic>
+                                            <children>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="script" text="Скрипт" />
+                                                         </graphic>
+                                              </TreeItem>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="template" text="Печатные формы" />
+                                                         </graphic>
+                                                <children>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Детализированный наряд" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Общий наряд" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                </children>
+                                              </TreeItem>
+                                            </children>
+                                          </TreeItem>
+                                          
+                                                                            </children>
+                                      </TreeItem>
+                                      
+                                                                          <TreeItem expanded="true" value=" ">
+                                        <graphic>
+                                                <Label styleClass="action" text="ОТГРУЗКА" />
+                                             </graphic>
+                                        <children>
+                                          
+                                                                              <TreeItem expanded="true" value="">
+                                            <graphic>
+                                              <Label styleClass="document" text="Акт завершения работ" />
+                                            </graphic>
+                                            <children>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="script" text="Скрипт" />
+                                                         </graphic>
+                                              </TreeItem>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="template" text="Печатные формы" />
+                                                         </graphic>
+                                                <children>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Детализированный акт" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Общий акт" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                </children>
+                                              </TreeItem>
+                                            </children>
+                                          </TreeItem>
+                                          
+                                                                              <TreeItem expanded="true" value="">
+                                            <graphic>
+                                              <Label styleClass="document" text="Счёт-фактура" />
+                                            </graphic>
+                                            <children>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="script" text="Скрипт" />
+                                                         </graphic>
+                                              </TreeItem>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="template" text="Печатные формы" />
+                                                         </graphic>
+                                                <children>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Детализированная фактура" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Общая фактура" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                </children>
+                                              </TreeItem>
+                                            </children>
+                                          </TreeItem>
+                                          
+                                                                            </children>
+                                      </TreeItem>
+                                      
+                                                                          <TreeItem expanded="true" value="">
+                                        <graphic>
+                                                <Label styleClass="action" text="ОПЛАТА" />
+                                             </graphic>
+                                        <children>
+                                          
+                                                                              <TreeItem expanded="true" value="">
+                                            <graphic>
+                                              <Label styleClass="document" text="Платёжное поручение" />
+                                            </graphic>
+                                            <children>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="script" text="Скрипт" />
+                                                         </graphic>
+                                              </TreeItem>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="template" text="Печатные формы" />
+                                                         </graphic>
+                                                <children>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Детализированное поручение" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Общее поручение" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                </children>
+                                              </TreeItem>
+                                            </children>
+                                          </TreeItem>
+                                          
+                                                                              <TreeItem expanded="true" value="">
+                                            <graphic>
+                                              <Label styleClass="document" text="Приходный кассовый ордер" />
+                                            </graphic>
+                                            <children>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="script" text="Скрипт" />
+                                                         </graphic>
+                                              </TreeItem>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                            <Label styleClass="template" text="Печатные формы" />
+                                                         </graphic>
+                                                <children>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Детализированный ордер" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                                  <Label styleClass="template-item" text="Общий ордер" />
+                                                               </graphic>
+                                                  </TreeItem>
+                                                </children>
+                                              </TreeItem>
+                                            </children>
+                                          </TreeItem>
+                                          
+                                                                            </children>
+                                      </TreeItem>
+                                      
+                                                                        </children>
+                                  </TreeItem> 
+                                </root>
+                              </TreeView>
+                           </content>
+                      </TitledPane>
+                        <TitledPane fx:id="propcPane" layoutX="10.0" layoutY="10.0" text="Процедурные">
+                           <content>
+                              <TreeView fx:id="procTree" showRoot="false">
+                                 <root>
+                                    <TreeItem expanded="true" value="Документы">
+                                       <children>
+                                         
+                                                                       <TreeItem expanded="true" value="">
+                                            <graphic>
+                                                <Label styleClass="document" text="Акт КМ2" />
+                                             </graphic>
+                                            <children>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                      <Label styleClass="script" text="Скрипт" />
+                                                   </graphic>
+                                              </TreeItem>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                      <Label styleClass="template" text="Печатные формы" />
+                                                   </graphic>
+                                                <children>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                            <Label styleClass="template-item" text="Детализированный акт" />
+                                                         </graphic>
+                                                  </TreeItem>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                            <Label styleClass="template-item" text="Общий акт" />
+                                                         </graphic>
+                                                  </TreeItem>
+                                                </children>
+                                              </TreeItem>
+                                            </children>
+                                          </TreeItem>
+                                          
+                                                                       <TreeItem expanded="true" value="">
+                                            <graphic>
+                                                <Label styleClass="document" text="Техническое заключение" />
+                                             </graphic>
+                                            <children>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                      <Label styleClass="script" text="Скрипт" />
+                                                   </graphic>
+                                              </TreeItem>
+                                              <TreeItem expanded="true" value="">
+                                                <graphic>
+                                                      <Label styleClass="template" text="Печатные формы" />
+                                                   </graphic>
+                                                <children>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                            <Label styleClass="template-item" text="Детализированное заключение" />
+                                                         </graphic>
+                                                  </TreeItem>
+                                                  <TreeItem expanded="true" value="">
+                                                    <graphic>
+                                                            <Label styleClass="template-item" text="Общее заключение" />
+                                                         </graphic>
+                                                  </TreeItem>
+                                                </children>
+                                              </TreeItem>
+                                            </children>
+                                          </TreeItem>
+                                          
+                                                                     </children>
+                                    </TreeItem>
+                                 </root>
+                              </TreeView>
+                           </content>
+                        </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </VBox>
+            <BorderPane fx:id="rightPanel" />
+         </items>
+      </SplitPane>
+   </center>
+   <!--<fx:script source="ActionDocuments.groovy"/>-->
+</BorderPane>

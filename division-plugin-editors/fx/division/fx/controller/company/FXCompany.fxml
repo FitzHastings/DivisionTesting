@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import division.fx.*?>
+<?import division.fx.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import division.fx.border.titleborder.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@FXCompany.css" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <tabs>
+      <Tab fx:id="tab" text="Реквизиты">
+         <content>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Label fx:id="cfcGroups" styleClass="link" text="Регистрация в группах ЦФУ">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <SplitPane fx:id="rootsplit" dividerPositions="0.5" orientation="VERTICAL" VBox.vgrow="ALWAYS">
+                     <items>
+                        <VBox maxHeight="170.0" minHeight="0.0">
+                           <children>
+                              <TitleBorderPane fx:id="ownerType" styleClass="menu-title-pane" title="Форма собственности" VBox.vgrow="NEVER">
+                                 <center>
+                                    <VBox BorderPane.alignment="CENTER">
+                                       <children>
+                                          <HBox spacing="10.0">
+                                             <children>
+                                                <ImageBox fx:id="logo" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" prefHeight="75.0" prefWidth="75.0" />
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <TextArea fx:id="name" prefHeight="50.0" prefWidth="100.0" promptText="Полное наименование" />
+                                                      <TextField fx:id="shortName" promptText="Краткое наименование" />
+                                                      <HBox alignment="CENTER_LEFT" spacing="20.0">
+                                                         <children>
+                                                            <Label text="ИНН" />
+                                                            <DivisionTextField fx:id="inn" prefWidth="100.0" />
+                                                            <CheckBox fx:id="ndsPayer" mnemonicParsing="false" text="Плательщик НДС" />
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                                <TitleBorderPane fx:id="chifType" styleClass="not-menu-pane" title="Руководство" HBox.hgrow="ALWAYS">
+                                                   <center>
+                                                      <VBox spacing="5.0" BorderPane.alignment="CENTER">
+                                                         <children>
+                                                            <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                                               <children>
+                                                                  <Label fx:id="firstPersonLabel" styleClass="link" text="Первое лицо" />
+                                                                  <TextField fx:id="firstPerson" HBox.hgrow="ALWAYS" />
+                                                                  <ImageBox fx:id="firstPersonSignature" maxHeight="25.0" maxWidth="75.0" minHeight="25.0" minWidth="75.0" prefHeight="25.0" prefWidth="75.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                                               <children>
+                                                                  <Label fx:id="secondPersonLabel" styleClass="link" text="Второе лицо" />
+                                                                  <TextField fx:id="secondPerson" HBox.hgrow="ALWAYS" />
+                                                                  <ImageBox fx:id="secondPersonSignature" maxHeight="25.0" maxWidth="75.0" minHeight="25.0" minWidth="75.0" prefHeight="25.0" prefWidth="75.0" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                                               <children>
+                                                                  <Label text="Основание действий" />
+                                                                  <TextField fx:id="reason" HBox.hgrow="ALWAYS" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                         <padding>
+                                                            <Insets right="10.0" />
+                                                         </padding>
+                                                      </VBox>
+                                                   </center>
+                                                   <right>
+                                                      <ImageBox fx:id="companySignature" maxHeight="75.0" maxWidth="75.0" minHeight="75.0" minWidth="75.0" prefHeight="75.0" prefWidth="75.0" />
+                                                   </right>
+                                                </TitleBorderPane>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </center>
+                              </TitleBorderPane>
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <TitleBorderPane fx:id="partition" styleClass="menu-title-pane" title="Обособленное подразделение" VBox.vgrow="ALWAYS">
+                                 <center>
+                                    <TabPane maxHeight="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                                       <tabs>
+                                          <Tab fx:id="partitionDataTab" text="Реквизиты">
+                                             <content>
+                                                <VBox fx:id="partitionDataPane" spacing="5.0">
+                                                   <children>
+                                                      <HBox alignment="CENTER">
+                                                         <children>
+                                                            <TitleBorderPane styleClass="not-menu-pane" title="Юридический" HBox.hgrow="ALWAYS">
+                                                               <center>
+                                                                  <TextArea fx:id="urAddress" prefHeight="75.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+                                                               </center>
+                                                            </TitleBorderPane>
+                                                            <VBox alignment="CENTER" fillWidth="false" spacing="5.0" HBox.hgrow="NEVER">
+                                                               <children>
+                                                                  <Button fx:id="urToFact" mnemonicParsing="false" text="&gt;" />
+                                                                  <Button fx:id="factToUr" mnemonicParsing="false" text="&lt;" />
+                                                               </children>
+                                                            </VBox>
+                                                            <TitleBorderPane styleClass="not-menu-pane" title="Фактический" HBox.hgrow="ALWAYS">
+                                                               <center>
+                                                                  <TextArea fx:id="factAddress" prefHeight="75.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+                                                               </center>
+                                                            </TitleBorderPane>
+                                                            <VBox alignment="CENTER" fillWidth="false" spacing="5.0" HBox.hgrow="NEVER">
+                                                               <children>
+                                                                  <Button fx:id="factToPost" mnemonicParsing="false" text="&gt;" />
+                                                                  <Button fx:id="postToFact" mnemonicParsing="false" text="&lt;" />
+                                                               </children>
+                                                            </VBox>
+                                                            <TitleBorderPane styleClass="not-menu-pane" title="Почтовый" HBox.hgrow="ALWAYS">
+                                                               <center>
+                                                                  <TextArea fx:id="postAddress" prefHeight="75.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+                                                               </center>
+                                                            </TitleBorderPane>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
+                                                </VBox>
+                                             </content>
+                                          </Tab>
+                                          <Tab fx:id="partitionStoreTab" text="Активы" />
+                                          <Tab fx:id="partitionDocTab" text="Документооборот">
+                                             <content>
+                                                <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                                                   <tabs>
+                                                      <Tab text="Нумерация и экспорт">
+                                                         <content>
+                                                            <VBox spacing="5.0">
+                                                               <children>
+                                                                  <HBox prefHeight="100.0" prefWidth="200.0">
+                                                                     <children>
+                                                                        <TitleBorderPane fx:id="fileExportPane" styleClass="menu-title-pane" title="Файл экспорта документов" HBox.hgrow="ALWAYS">
+                                                                           <center>
+                                                                              <TextField fx:id="fileExport" BorderPane.alignment="CENTER" />
+                                                                           </center>
+                                                                        </TitleBorderPane>
+                                                                        <TitleBorderPane fx:id="documentEditDatePane" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" title="Глубина редактирования" type="CHECKBOX" HBox.hgrow="NEVER">
+                                                                           <center>
+                                                                              <DatePicker fx:id="documentEditDate" BorderPane.alignment="CENTER" />
+                                                                           </center>
+                                                                        </TitleBorderPane>
+                                                                     </children>
+                                                                     <VBox.margin>
+                                                                        <Insets top="10.0" />
+                                                                     </VBox.margin>
+                                                                  </HBox>
+                                                                  <TitleBorderPane fx:id="contractNumberPane" styleClass="not-menu-pane" title="Нумерация договоров по основному подразделению" type="CHECKBOX" VBox.vgrow="NEVER">
+                                                                     <center>
+                                                                        <VBox spacing="10.0" BorderPane.alignment="CENTER">
+                                                                           <children>
+                                                                              <GridPane alignment="CENTER" hgap="5.0" vgap="5.0" VBox.vgrow="NEVER">
+                                                                                 <children>
+                                                                                    <Label text="Префикс" />
+                                                                                    <Label text="Дата" GridPane.columnIndex="1" />
+                                                                                    <Label text="Раздел. префикса" GridPane.columnIndex="2" />
+                                                                                    <Label text="Раздел. суффикса" GridPane.columnIndex="4" />
+                                                                                    <Label text="Дата" GridPane.columnIndex="5" />
+                                                                                    <Label text="Суффикс" GridPane.columnIndex="6" />
+                                                                                    <Label text="Нач. номер" GridPane.columnIndex="7" />
+                                                                                    <TextField fx:id="prefixContract" prefWidth="50.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                                                                                    <ChoiceBox fx:id="prefixDateContract" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                                                                                    <TextField fx:id="prefixSplitContract" prefWidth="50.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                                                                                    <TextField fx:id="suffixSplitContract" prefWidth="50.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                                                                                    <ChoiceBox fx:id="suffixDateContract" maxWidth="1.7976931348623157E308" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.vgrow="NEVER" />
+                                                                                    <TextField fx:id="suffixContract" prefWidth="50.0" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                                                                    <Label text="№" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="BOTTOM">
+                                                                                       <font>
+                                                                                          <Font name="System Bold" size="20.0" />
+                                                                                       </font>
+                                                                                    </Label>
+                                                                                    <DivisionTextField fx:id="startNumberContract" prefWidth="50.0" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER" />
+                                                                                 </children>
+                                                                                 <columnConstraints>
+                                                                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                                                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                                                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                                                                    <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                                                                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                                                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                                                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                                                                    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                                                                                 </columnConstraints>
+                                                                                 <rowConstraints>
+                                                                                    <RowConstraints valignment="CENTER" vgrow="NEVER" />
+                                                                                    <RowConstraints vgrow="SOMETIMES" />
+                                                                                 </rowConstraints>
+                                                                              </GridPane>
+                                                                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                                                                 <children>
+                                                                                    <TitleBorderPane fx:id="toZeroContract" title="Обнуление" type="CHECKBOX" HBox.hgrow="NEVER">
+                                                                                       <center>
+                                                                                          <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+                                                                                             <children>
+                                                                                                <RadioButton fx:id="everyDayContract" mnemonicParsing="false" text="Ежедневно" HBox.hgrow="ALWAYS" />
+                                                                                                <RadioButton fx:id="everyMonthContract" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Ежемесячно" HBox.hgrow="ALWAYS" />
+                                                                                                <RadioButton fx:id="everyYearContract" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Ежегодно" HBox.hgrow="ALWAYS" />
+                                                                                             </children>
+                                                                                          </HBox>
+                                                                                       </center>
+                                                                                    </TitleBorderPane>
+                                                                                    <CheckBox fx:id="replaceNumberContract" mnemonicParsing="false" text="Занимать пропущенный номер" HBox.hgrow="ALWAYS" />
+                                                                                 </children>
+                                                                              </HBox>
+                                                                           </children>
+                                                                        </VBox>
+                                                                     </center>
+                                                                  </TitleBorderPane>
+                                                                  <TitleBorderPane fx:id="docNumberPane" styleClass="not-menu-pane" title="Нумерация документов по основному подразделению" type="CHECKBOX" VBox.vgrow="ALWAYS" />
+                                                               </children>
+                                                            </VBox>
+                                                         </content>
+                                                      </Tab>
+                                                      <Tab text="Шаблоны документов">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                                         </content>
+                                                      </Tab>
+                                                   </tabs>
+                                                </TabPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab fx:id="partitionKKTTab" text="Настрока ККТ" />
+                                       </tabs>
+                                    </TabPane>
+                                 </center>
+                              </TitleBorderPane>
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                     </items>
+                  </SplitPane>
+               </children>
+            </VBox>
+         </content>
+      </Tab>
+      <Tab fx:id="prices" text="Прайс-листы" />
+   </tabs>
+</TabPane>

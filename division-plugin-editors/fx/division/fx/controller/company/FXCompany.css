@@ -1,0 +1,221 @@
+.company-document-cell-disable {
+  -fx-background-color: lightgray;
+  //-fx-text-fill: gray;
+}
+
+.company-document-cell-disable:selected {
+  -fx-background-color: gray;
+}
+
+.tab-pane {
+  -fx-background-color: inherit;
+}
+
+.menu-title-pane .title-label, .link {
+  -fx-cursor: hand;
+  -fx-font-weight:bold;
+  -fx-text-fill: blue;
+}
+
+.menu-title-pane .title-label:hover, .link:hover {
+  -fx-text-fill: red;
+}
+
+.not-menu-pane .title-label {
+  -fx-cursor: default;
+  -fx-font-weight: normal;
+  -fx-text-fill: black;
+}
+
+.not-menu-pane .title-label:hover {
+  -fx-cursor: default;
+  -fx-font-weight: normal;
+  -fx-text-fill: black;
+}
+
+.menu-item {
+  -fx-font-weight: normal;
+}
+
+.image-view, .ImageBox {
+  -fx-cursor: hand;
+}
+
+.text-area {
+  -fx-wrap-text: true;
+}
+
+.image-pane, .ImageBox {
+  -fx-border-color: lightgray;
+}
+
+.image-pane:hover, .ImageBox:hover {
+  -fx-border-color: gray;
+}
+
+
+
+.inn:error, .kpp:error {
+  -fx-text-fill: red;
+}
+
+.StoreData .split-pane .table-view .scroll-bar:vertical * {
+  -fx-pref-width:0;
+  -fx-pref-height:0;
+}
+
+.params .scroll-bar:vertical {
+  -fx-pref-width:15;
+}
+
+.factorTable .table-cell {
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+}
+
+.disable-factor-cell {
+  -fx-background-color: lightgray;
+  -fx-opacity: 0.7;
+}
+
+.factorTable .table-row-cell:selected .disable-factor-cell {
+  -fx-opacity: 1;
+}
+
+.contractNumberingPane .title-label {
+  -fx-cursor: default;
+  -fx-font-weight: normal;
+  -fx-text-fill: black;
+}
+
+.contractNumberingPane .title-label:hover {
+  -fx-cursor: default;
+  -fx-font-weight: normal;
+  -fx-text-fill: black;
+}
+
+.contractGridPane {
+  -fx-background-color: red;
+  -fx-background-radius: 5.0;
+  -fx-background-insets: 0.0 5.0 0.0 5.0;
+  -fx-padding: 10;
+  -fx-hgap: 10;
+  -fx-vgap: 10;
+  -fx-alignment: CENTER;
+}
+
+.column-constraints {
+  -fx-percent-width:100;
+}
+
+.buttonBox {
+  -fx-padding: 0 10 10 0;
+}
+
+.equipment {
+  -fx-font-weight: bold;
+}
+
+.storeTool .button {
+  -fx-max-width: 20;
+  -fx-max-height: 20;
+  -fx-min-width: 20;
+  -fx-min-height: 20;
+  -fx-pref-width: 20;
+  -fx-pref-height: 20;
+  -fx-padding: 2;
+  -fx-font-size: 10;
+}
+
+
+
+/*.showAllButton {
+  -fx-graphic: url("img/show-all.png");
+}
+
+.objectColumnGraphic {
+  -fx-padding: 2;
+  -fx-spacing: 3;
+}
+
+.storeTool {
+  -fx-spacing: 2;
+  -fx-padding: 2;
+}
+
+.storeTool .button {
+  -fx-max-width: 20;
+  -fx-max-height: 20;
+  -fx-min-width: 20;
+  -fx-min-height: 20;
+  -fx-padding: 2;
+  -fx-font-size: 10;
+}
+
+.storeTool .text-field {
+  -fx-max-height: 20;
+  -fx-padding: 2;
+  -fx-font-size: 10;
+}*/
+
+.treetable .scroll-bar:vertical * {
+  -fx-pref-width:0;
+}
+
+.treetable .tree-table-cell {
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+}
+
+.treetable .disable-treetable-column.tree-table-cell {
+  -fx-background-color: lightgray;
+  -fx-opacity: 0.8;
+}
+
+.split .divider * {
+  -fx-pref-width: 20;
+}
+
+.groupFilterToolButton:filtered {
+  -fx-text-fill: RED;
+}
+
+.unique-column {
+  -fx-font-weight: bold;
+}
+
+.menu-item-selected {
+  -fx-background-color: steelblue;
+}
+
+.menu-item-selected .label {
+  -fx-text-fill: white;
+}
+
+.popcontent {
+  -fx-border-style: solid;
+  -fx-border-color: gray;
+}
+
+.popcontent * {
+  -fx-padding: 3;
+}
+
+
+.EquipmentCreator .hb {
+  -fx-spacing: 10;
+}
+
+.EquipmentCreator .treeBox {
+  -fx-spacing: 10;
+  -fx-padding: 10;
+}
+
+.groupLabel {
+  -fx-font-weight: bold;
+  -fx-font-size: 15pt;
+}
+
+.addButton {
+  -fx-graphic: url("img/down.png");
+}

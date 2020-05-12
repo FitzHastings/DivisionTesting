@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import division.fx.*?>
+<?import division.fx.table.*?>
+<?import division.fx.border.titleborder.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.geometry.*?>
+<?import division.fx.border.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+
+<VBox spacing="5.0" stylesheets="@css/payment.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" spacing="5.0">
+         <children>
+            <ComboBox fx:id="typeChooser" maxWidth="1.7976931348623157E308" style="-fx-font-size: 20; -fx-font-weight: bold;" HBox.hgrow="ALWAYS" />
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/sum.png" />
+               </image>
+            </ImageView>
+            <DivisionTextField fx:id="amountField" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" promptText="сумма..." style="-fx-font-size: 20; -fx-font-weight: bold;" HBox.hgrow="ALWAYS" />
+            <ComboBox fx:id="currencyChooser" minWidth="100.0" prefWidth="150.0" style="-fx-font-size: 20; fx-font-weight: bold;" />
+         </children>
+      </HBox>
+      <GridPane maxHeight="300.0" minHeight="200.0" VBox.vgrow="NEVER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+          <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints vgrow="ALWAYS" />
+        </rowConstraints>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <children>
+            <TitleBorderPane title="Получатель">
+               <center>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="sellerLabel" style="-fx-font-size: 15; -fx-font-weight: bold;" text="Наименование..." />
+                        <ComboBox fx:id="sellerStoreChooser" maxWidth="1.7976931348623157E308" />
+                        <FXDivisionTable fx:id="sellerDocuments" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </center></TitleBorderPane>
+            <TitleBorderPane title="Плательщик" GridPane.columnIndex="1">
+               <center>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="customerLabel" style="-fx-font-size: 15; -fx-font-weight: bold;" text="Наименование..." />
+                        <ComboBox fx:id="customerStoreChooser" maxWidth="1.7976931348623157E308" />
+                        <FXDivisionTable fx:id="customerDocuments" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </center></TitleBorderPane>
+         </children>
+      </GridPane>
+      <Label fx:id="neraspredeleno" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" style="-fx-font-weight: bold; -fx-font-size: 20; -fx-font-color: RED;" text="Нераспределённые средства: " textFill="RED">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <FXDivisionTable fx:id="dealTable" VBox.vgrow="ALWAYS" />
+      <Label text="НАЗНАЧЕНИЕ ПЛАТЕЖА" />
+      <TextArea fx:id="paymentReasonField" maxHeight="60.0" minHeight="60.0" prefHeight="60.0">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </TextArea>
+   </children>
+</VBox>

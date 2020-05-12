@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import division.fx.*?>
+<?import division.fx.border.titleborder.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="processName" promptText="Наименование продукта..." VBox.vgrow="NEVER" />
+      <TitleBorderPane fx:id="objectTitleBorder" title="Применяется:">
+         <center>
+            <VBox spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <RadioButton fx:id="sellerCheckBox" mnemonicParsing="false" text="к объектам продавца" />
+                  <RadioButton fx:id="customerCheckBox" mnemonicParsing="false" text="к объектам покупателя" />
+                  <RadioButton fx:id="myselfCheckbox" mnemonicParsing="false" text="самостоятельно" />
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </VBox>
+         </center>
+         <right>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <CheckBox fx:id="withChangeOwnerCheckBox" alignment="TOP_LEFT" contentDisplay="TOP" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" text="со сменой владельца" />
+               </children>
+            </VBox>
+         </right>
+         <bottom>
+            <VBox fx:id="periodPanel" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label text="Длительность" />
+                        <DivisionTextField fx:id="duration" prefColumnCount="2" HBox.hgrow="ALWAYS" />
+                        <ChoiceBox fx:id="durationType" prefWidth="100.0" HBox.hgrow="NEVER" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="10.0">
+                     <children>
+                        <Label text="Цикличность  " />
+                        <DivisionTextField fx:id="reccurence" prefColumnCount="2" HBox.hgrow="ALWAYS" />
+                        <ChoiceBox fx:id="reccurenceType" prefWidth="100.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </bottom>
+      </TitleBorderPane>
+      <TitleBorderPane fx:id="factorPanel" title="Реквизиты безъобектного продукта" VBox.vgrow="ALWAYS" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

@@ -1,0 +1,50 @@
+.action {
+  -fx-font-weight: bold;
+  -fx-graphic: url("img/action.png");
+}
+
+.document {
+  -fx-font-weight: bold;
+  -fx-graphic: url("img/document.png");
+  //-fx-font-style: italic;
+}
+
+.action-confirm {
+  -fx-graphic: url("img/main-document.png");
+}
+
+.script {
+  -fx-graphic: url("img/script.png");
+}
+
+.template {
+  -fx-graphic: url("img/template.gif");
+}
+
+.template-item {
+  -fx-font-style: italic;
+}
+
+
+.tool-button {
+  -fx-padding: 3;
+  -fx-font-weight: bold;
+  -fx-text-fill: green;
+}
+
+.remove-button {
+  -fx-text-fill: red;
+  -fx-padding: 5 7 4 7;
+}
+
+.template-item-add-button {
+  -fx-graphic: url("img/template.gif");
+}
+
+.document-add-button {
+  -fx-graphic: url("img/document.png");
+}
+
+.action-add-button {
+  -fx-graphic: url("img/action.png");
+}

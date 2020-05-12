@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import division.fx.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox spacing="10.0" VBox.vgrow="NEVER">
+         <children>
+            <DivisionTextField fx:id="nameField" promptText="Наименование..." HBox.hgrow="ALWAYS" />
+            <RadioButton fx:id="intval" mnemonicParsing="false" text="Целое" />
+            <RadioButton fx:id="floatval" mnemonicParsing="false" text="Дробное" />
+         </children>
+      </HBox>
+      <TextArea fx:id="descriptField" promptText="Описание..." VBox.vgrow="ALWAYS" />
+   </children>
+</VBox>

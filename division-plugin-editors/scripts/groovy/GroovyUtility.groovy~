@@ -1,0 +1,350 @@
+package scripts.groovy
+
+import javax.swing.JOptionPane;
+import jdk.nashorn.api.scripting.NashornScriptEngine
+import util.RemoteSession
+import util.filter.local.DBFilter
+import bum.interfaces.*;
+import bum.interfaces.CreatedDocument
+import bum.interfaces.ProductDocument.ActionType;
+import bum.interfaces.Store.StoreType;
+import division.swing.LocalProcessing
+import bum.interfaces.Group.ObjectType;
+import division.swing.guimessanger.Messanger
+import java.sql.Timestamp
+import java.util.AbstractMap.SimpleEntry
+import java.util.Map.Entry
+import java.util.Date
+import javax.script.Invocable
+import javax.script.ScriptEngine
+import javax.script.ScriptEngineFactory
+import javax.script.ScriptEngineManager
+import java.util.Map
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants
+import bum.interfaces.CreatedDocument.ExportType;
+import bum.interfaces.CreatedDocument.SendType;
+import bum.interfaces.Service.Owner;
+
+class GroovyUtility {
+  private static NashornScriptEngine engine = new ScriptEngineManager().getEngineByName("JavaScript");
+  private static GroovyShell         shell  = new GroovyShell(GroovyUtility.class.getClassLoader());
+
+  public static List<document> getDocuments(ActionType actionType, Integer[] dealPositions, RemoteSession session) throws Exception {
+    //Получаем документы, которые относятся к данному событию и данным продуктам.
+    Vector<Vector> data = session.executeQuery("SELECT "
+      /*0*/+  "[Document(id)],"
+      /*1*/ + "[Document(name)],"
+      /*2*/ + "[Document(script)],"
+      /*3*/ + "[Document(scriptLanguage)], "
+      
+      /*4*/ + "[Document(system)],"
+      /*5*/ + "[Document(documentSource)],"
+      /*6*/ + "[Document(ndsPayer)],"
+      /*7*/ + "[Document(actionType)],"
+      /*8*/ + "[Document(movable)], "
+      /*9*/ + "[Document(moneyCash)], "
+      /*10*/ + "[Document(moneyCashLess)], "
+      /*11*/+ "[Document(tmcCash)], "
+      /*12*/+ "[Document(tmcCashLess)] "
+      
+      + "FROM [Document] "
+      + "WHERE "
+      + "tmp = false AND "
+      + "type = 'CURRENT' AND "
+      + "([Document(system)] = true AND [Document(actionType)] = ? OR "
+      +  "[Document(system)] = false AND id IN "
+      + "(SELECT DISTINCT [ProductDocument(document)] FROM [ProductDocument] "
+      + "WHERE tmp=false and type='CURRENT' and [ProductDocument(actionType)]=? and "
+      + "[ProductDocument(product)] IN (select [DealPosition(product)] FROM [DealPosition] WHERE id=ANY(?))))", 
+      [actionType, actionType, dealPositions].toArray());
+    
+    def documents = []
+    data.each {documents << new document(
+        id:            it[0],
+        name:          it[1],
+        script:        it[2],
+        scriptLanguage:it[3],
+        system:        it[4],
+        documentSource:it[5]==null?null:Owner.valueOf((String)it[5]),
+        ndsPayer:      it[6],
+        actionType:it[7]==null?null:ActionType.valueOf((String)it[7]),
+        movable:       it[8],
+        moneyCash:     it[9],
+        moneyCashLess: it[10],
+        tmcCash:       it[11],
+        tmcCashLess:   it[12],
+      )}
+
+    return documents;
+  }
+
+  public static void createDocuments(
+    LocalProcessing process,
+    ActionType actionType, 
+    Date date, 
+    RemoteSession session, 
+    Integer[] dealPositions, 
+    Integer paymentId, 
+    Map<Integer, Entry<String, Date>> documentNumbers, 
+    Map<String, Object> documentScriptData) throws Exception {
+    
+    process.setAlwaysOnTop(true)
+    process.setSubProgressVisible(true)
+    process.setSubTextVisible(true)
+    
+    def documents = getDocuments(actionType, dealPositions, session)
+    process.setMinMax(0,documents.size()+1)
+    startModuls(session)
+    documents.each { doc -> 
+      process.setValue(process.getValue()+1)
+      process.setText("Создание документов типа \""+doc.getName()+"\"")
+      // Для данного типа документа выбираем список позиций,
+      
+      def query = "SELECT [DealPosition(deal)], [DealPosition(id)] FROM [DealPosition] WHERE [DealPosition(id)]=ANY(?)"
+      
+      if(doc.isSystem()) {
+        if(doc.getNdsPayer() != null)
+          query += " AND (SELECT [Company(ndsPayer)] FROM [Company] WHERE [Company(id)]=[DealPosition("+(doc.getDocumentSource() == Owner.SELLER ? "seller" : "customer")+"_id)]) = " + doc.getNdsPayer()
+
+        if(doc.getMovable() != null) {
+          query += " AND (SELECT [Service(owner)] IS NULL OR [Service(owner)] IS NOT NULL AND [Service(moveStorePosition)] FROM [Service] WHERE [Service(id)] = [DealPosition(process_id)]) = "+doc.getMovable()
+          if(doc.getMovable()) {
+
+            "(SELECT [Payment(customer-object-type)] WHERE [Payment(id)]="+paymentId+")"
+
+            query += 
+            doc.isMoneyCash()     ? " AND (SELECT [Payment(customer-object-type)] FROM [Payment] WHERE [Payment(id)]="+paymentId+")='ВАЛЮТА' AND (SELECT [Payment(customer-store-type)] FROM [Payment] WHERE [Payment(id)]="+paymentId+")='НАЛИЧНЫЙ'" : 
+            doc.isMoneyCashLess() ? " AND (SELECT [Payment(customer-object-type)] FROM [Payment] WHERE [Payment(id)]="+paymentId+")='ВАЛЮТА' AND (SELECT [Payment(customer-store-type)] FROM [Payment] WHERE [Payment(id)]="+paymentId+")='БЕЗНАЛИЧНЫЙ'" : 
+            doc.isTmcCash()       ? " AND [DealPosition(customer-object-type)]='ТМЦ' AND [DealPosition(customer-store-type)]='НАЛИЧНЫЙ'" : 
+            doc.isTmcCashLess()   ? " AND [DealPosition(customer-object-type)]='ТМЦ' AND [DealPosition(customer-store-type)]='БЕЗНАЛИЧНЫЙ'" : "";
+          }
+        }
+      }else {
+        query += " AND [DealPosition(product)] IN (SELECT [ProductDocument(product)] FROM [ProductDocument] WHERE [ProductDocument(document)]="+doc.getId()+")"
+      }
+      
+      def data = session.executeQuery(query, [dealPositions].toArray());
+      
+      String documentNumber = null;
+      Date   documentDate   = null;
+
+      if(documentNumbers != null && documentNumbers.containsKey(doc.getId())) {
+        documentNumber = documentNumbers.get(doc.getId()).getKey();
+        documentDate   = documentNumbers.get(doc.getId()).getValue();
+      }
+
+      def deals = [:]
+      data.each {
+        def dps = deals[it.get(0)]
+        if(dps == null)
+          deals[it.get(0)] = (dps = [])
+        dps << it.get(1);
+      }
+      
+      process.setSubValue(0)
+      process.setSuibMinMax(0,deals.size())
+      deals.each { key,value -> 
+        data = session.executeQuery("SELECT createDocument(?,?,?,?,?,?)", [
+            doc.getId(),
+            value.toArray(new Integer[0]),
+            actionType.toString(),
+            paymentId,
+            documentNumber,
+            (documentDate==null?(date==null?getDocumentDate(value.toArray(new Integer[0]), actionType, session):new Timestamp(date.getTime())):new Timestamp(documentDate.getTime()))].toArray());
+        
+        if(!data.isEmpty()) {
+          def createdDocumentId = (Integer) data[0][0];
+          
+          /*data = session.executeQuery("SELECT [CreatedDocument(dealPositions):target] FROM [CreatedDocument(dealPositions):table] WHERE "
+            + "[CreatedDocument(dealPositions):object]="+createdDocumentId)
+          println doc.getName()+"  "+data.toString()*/
+          
+          def number = session.getData(CreatedDocument.class, [createdDocumentId].toArray(new Integer[0]), "number")[0][0]
+          process.setSubText(doc.getName()+(number!=null?" № "+number:""))
+          process.setSubValue(process.getSubValue()+1)
+          
+          Map<String,Object> documentData = getDocumentDataForTemplate(createdDocumentId, session);
+
+          if(documentScriptData == null)
+          documentScriptData = [:]
+          documentScriptData.putAll([ "session":session,
+              "documentData":documentData,
+              "dealPositionIds":value.toArray(new Integer[0]),
+              "createdDocumentId":createdDocumentId ]);
+
+          def returnObject = runScript(doc.getName(), doc.getScript(), doc.getScriptLanguage(), documentScriptData);
+
+          Properties props = new Properties();
+          props.putAll(documentData);
+
+          def sqlParams = [props];
+          if(returnObject != null && !returnObject.equals(""))
+            sqlParams << returnObject.toString()
+          sqlParams << createdDocumentId
+
+          session.executeUpdate("UPDATE [CreatedDocument] SET [CreatedDocument(params)]=? "
+            +(returnObject != null && !returnObject.equals("") ? ", [CreatedDocument(name)]=?" : "")+" WHERE id=?", sqlParams.toArray());
+        }
+      }
+    }
+    process.setValue(process.getMaximum())
+  }
+
+  public static void startModuls(RemoteSession session) throws Exception {
+    session.getData(JSModul.class, new DBFilter(JSModul.class).AND_EQUAL("tmp", false).AND_EQUAL("type", "CURRENT"), 
+      ["name","script", "scriptLanguage"].toArray(new String[0])).each {
+      runScript((String) it.get(0), (String) it.get(1), (String) it.get(2), [:])
+    }
+  }
+
+  public static Object runScript(String scriptName, String scriptText, String scriptLanguage, Map<String, Object> params) throws Exception {
+    def returnObject = scriptName;
+    if(scriptText != null && !scriptText.equals("")) {
+      try {
+        switch(scriptLanguage) {
+          case SyntaxConstants.SYNTAX_STYLE_JAVASCRIPT:
+            params.each {key,value -> engine.put(key, value)}
+            returnObject = engine.eval(scriptText);
+            break;
+          case SyntaxConstants.SYNTAX_STYLE_GROOVY:
+            params.each {key,value -> shell.setVariable(key, value)}
+            returnObject = shell.evaluate(scriptText);
+            break;
+        }
+      }catch(Exception ex) {
+        returnObject = null;
+        throw new Exception("Ошибка в скрипте "+scriptName+": ", ex);
+      }
+    }
+    return returnObject;
+  }
+  
+  public static Object invokeMethodFromScript(String scriptText, String scriptLanguage, Map<String, Object> scriptParams, String methodName, Object[] methodParams) throws Exception {
+    def returnObject = null;
+    if(scriptText != null && !scriptText.equals("")) {
+      try {
+        scriptParams = scriptParams==null?[:]:scriptParams;
+        switch(scriptLanguage) {
+          case SyntaxConstants.SYNTAX_STYLE_JAVASCRIPT:
+            scriptParams.each {key,value -> engine.put(key, value)}
+            engine.eval(scriptText);
+            returnObject = engine.invokeFunction(methodName, methodParams);
+            break;
+          case SyntaxConstants.SYNTAX_STYLE_GROOVY:
+            scriptParams.each {key,value -> shell.setVariable(key, value)}
+            returnObject = shell.parse(scriptText).invokeMethod(methodName, methodParams);
+            break;
+        }
+      }catch(Exception ex) {
+        throw new Exception("Ошибка в методе "+methodName+": ", ex);
+      }
+    }
+    return returnObject;
+  }
+  
+  public static Map<String, Object> getDocumentDataForTemplate(Integer createdDocumentId, RemoteSession session) {
+    Vector<Vector> data = session.executeQuery("SELECT "
+    /*0*/ + "getCompanyName((SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)])),"
+    /*1*/ + "getCompanyName((SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(customerCompanyPartition)])), "
+    /*2*/ + "number, "
+    /*3*/ + "date, "
+    /*4*/ + "(SELECT [CompanyPartition(urAddres)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)]), "
+    /*5*/ + "(SELECT [CompanyPartition(urAddres)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(customerCompanyPartition)]), "
+    /*6*/ + "(SELECT [Company(inn)] FROM [Company] WHERE [Company(id)]=(SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)])), "
+    /*7*/ + "(SELECT [CompanyPartition(kpp)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)]), "
+    /*8*/ + "(SELECT [Company(bookkeeper)] FROM [Company] WHERE [Company(id)]=(SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)])), "
+    /*9*/ + "(SELECT [Company(inn)] FROM [Company] WHERE [Company(id)]=(SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(customerCompanyPartition)])), "
+    /*10*/+ "(SELECT [CompanyPartition(kpp)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(customerCompanyPartition)]), "
+    /*11*/+ "(SELECT [Company(chiefName)] FROM [Company] WHERE [Company(id)]=(SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)])), "
+    /*12*/+ "(SELECT [Company(ndsPayer)] FROM [Company] WHERE [Company(id)]=(SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)])), "
+    /*13*/+ "(SELECT [CompanyPartition(name)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)]), "
+    /*14*/+ "(SELECT [CompanyPartition(name)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(customerCompanyPartition)]), "
+    /*15*/+ "(SELECT COUNT([CompanyPartition(id)]) FROM [CompanyPartition] WHERE [CompanyPartition(company)]=(SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)])), "
+    /*16*/+ "(SELECT COUNT([CompanyPartition(id)]) FROM [CompanyPartition] WHERE [CompanyPartition(company)]=(SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(customerCompanyPartition)])), "
+    /*17*/+ "(SELECT [CompanyPartition(postAddres)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(customerCompanyPartition)]), "
+    /*18*/+ "(SELECT [Company(stamp)] FROM [Company] WHERE [Company(id)]=(SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)])), "
+    /*19*/+ "(SELECT [Company(chifSignature)] FROM [Company] WHERE [Company(id)]=(SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)])), "
+    /*20*/+ "(SELECT [Company(bookkeeperSignature)] FROM [Company] WHERE [Company(id)]=(SELECT [CompanyPartition(company)] FROM [CompanyPartition] WHERE [CompanyPartition(id)]=[CreatedDocument(sellerCompanyPartition)])) "
+    +"FROM [CreatedDocument] WHERE id="+createdDocumentId);
+    def mapForTemplate = [:];
+    mapForTemplate.seller                 = data.get(0).get(0)==null  ? "" : data.get(0).get(0)
+    mapForTemplate.customer               = data.get(0).get(1)==null  ? "" : data.get(0).get(1);
+    mapForTemplate.number                 = data.get(0).get(2)==null  ? "" : data.get(0).get(2);
+    mapForTemplate.date                   = data.get(0).get(3)==null  ? "" : data.get(0).get(3);
+    mapForTemplate.sellerAddr             = data.get(0).get(4)==null  ? "" : data.get(0).get(4);
+    mapForTemplate.customerAddr           = data.get(0).get(5)==null  ? "" : data.get(0).get(5);
+    mapForTemplate.sellerInn              = data.get(0).get(6)==null  ? "" : data.get(0).get(6);
+    mapForTemplate.sellerKpp              = data.get(0).get(7)==null  ? "" : data.get(0).get(7);
+    mapForTemplate.sellerBookKeeper       = data.get(0).get(8)==null  ? "" : data.get(0).get(8);
+    mapForTemplate.customerInn            = data.get(0).get(9)==null  ? "" : data.get(0).get(9);
+    mapForTemplate.customerKpp            = data.get(0).get(10)==null ? "" : data.get(0).get(10);
+    mapForTemplate.sellerChifName         = data.get(0).get(11)==null ? "" : data.get(0).get(11);
+    mapForTemplate.ndsPayer               = data.get(0).get(12);
+    mapForTemplate.sellerPartition        = data.get(0).get(13)==null ? "" : data.get(0).get(13);
+    mapForTemplate.customerPartition      = data.get(0).get(14)==null ? "" : data.get(0).get(14);
+    mapForTemplate.sellerPartitionCount   = data.get(0).get(15)==null ? 0  : data.get(0).get(15);
+    mapForTemplate.customerPartitionCount = data.get(0).get(16)==null ? 0  : data.get(0).get(16);
+    mapForTemplate.customerPostAddr       = data.get(0).get(17)==null ? "" : data.get(0).get(17);
+    mapForTemplate.stamp                  = data.get(0).get(18)==null ? new byte[0] : data.get(0).get(18);
+    mapForTemplate.chifSignature          = data.get(0).get(19)==null ? new byte[0] : data.get(0).get(19);
+    mapForTemplate.bookkeeperSignature    = data.get(0).get(20)==null ? new byte[0] : data.get(0).get(12);
+    
+    mapForTemplate.each{key,value -> printf key+" = "+value}
+    
+    return mapForTemplate;
+  }
+  
+  private static Timestamp getDocumentDate(Integer[] dealPositions, ActionType actionType, RemoteSession session) throws Exception {
+    Timestamp documentDate = null;
+    Vector<Vector> data;
+    switch(actionType) {
+      case ActionType.СТАРТ: 
+        data = session.executeQuery("SELECT MIN([DealPosition(deal_start_date)]) FROM [DealPosition] WHERE [DealPosition(id)]=ANY(?)", 
+                [dealPositions].toArray());
+        if(!data.isEmpty())
+          documentDate = new Timestamp(((java.sql.Date)data.get(0).get(0)).getTime());
+        break;
+      case ActionType.ОТГРУЗКА:
+        data = session.executeQuery("SELECT MAX([DealPosition(deal_end_date)]) FROM [DealPosition] WHERE [DealPosition(id)]=ANY(?)", 
+                [dealPositions].toArray());
+        if(!data.isEmpty())
+          documentDate = new Timestamp(((java.sql.Date)data.get(0).get(0)).getTime());
+        break;
+    }
+    return documentDate;
+  }
+  
+  public static Vector<Vector> getDocumentsForDealPositions(Integer[] dealPositions, RemoteSession session) throws Exception {
+    return session.executeQuery("SELECT "
+    + "[CreatedDocument(dealPositions):object], "
+    + "[CreatedDocument(dealPositions):target],"
+    + "(SELECT [CreatedDocument(exportType)] FROM [CreatedDocument] WHERE id=[CreatedDocument(dealPositions):object]), "
+    + "(SELECT [CreatedDocument(sendType)] FROM [CreatedDocument] WHERE id=[CreatedDocument(dealPositions):object]), "
+    + "(SELECT [CreatedDocument(document)] FROM [CreatedDocument] WHERE id=[CreatedDocument(dealPositions):object]), "
+    + "(SELECT [CreatedDocument(name)] FROM [CreatedDocument] WHERE id=[CreatedDocument(dealPositions):object]), "
+    + "(SELECT [CreatedDocument(number)] FROM [CreatedDocument] WHERE id=[CreatedDocument(dealPositions):object]) "
+    + "FROM [CreatedDocument(dealPositions):table] WHERE "
+    + "(SELECT tmp FROM [CreatedDocument] WHERE id=[CreatedDocument(dealPositions):object])=false AND "
+    + "(SELECT type FROM [CreatedDocument] WHERE id=[CreatedDocument(dealPositions):object])='CURRENT' AND "
+    + "(SELECT [CreatedDocument(stornoDate)] FROM [CreatedDocument] WHERE id=[CreatedDocument(dealPositions):object]) ISNULL AND "
+    + "[CreatedDocument(dealPositions):object] IN "
+    + "(SELECT DISTINCT [CreatedDocument(dealPositions):object] FROM [CreatedDocument(dealPositions):table] "
+    + "WHERE [CreatedDocument(dealPositions):target]=ANY(?))", [dealPositions].toArray());
+  }
+}
+
+class document {
+  Integer id;
+  String name;
+  String script;
+  String scriptLanguage;
+  boolean system;
+  Owner documentSource;
+  Boolean ndsPayer;
+  ActionType actionType;
+  Boolean movable;
+  boolean moneyCash;
+  boolean moneyCashLess;
+  boolean tmcCash;
+  boolean tmcCashLess;
+}

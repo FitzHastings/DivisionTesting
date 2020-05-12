@@ -1,0 +1,22 @@
+.border-pane {
+  -fx-background-color: inherit;
+  -fx-border-color: gray;
+  -fx-border-width: 1 1 1 1;
+  -fx-border-radius: 5;
+  -fx-border-insets: 8 8 8 8;
+  -fx-padding: 5;
+}
+
+.titleBorderLabel {
+  -fx-background-color: inherit;
+  -fx-translate-y: -14;
+  -fx-translate-x: 20;
+  -fx-padding: 0 5 0 5;
+  -fx-text-fill: blue;
+  -fx-cursor: hand;
+}
+
+.titleBorderLabel:disabled {
+  -fx-opacity: 1;
+  -fx-text-fill: gray;
+}

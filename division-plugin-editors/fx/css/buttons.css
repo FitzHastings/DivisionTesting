@@ -1,0 +1,109 @@
+.tool-button, 
+  .add-button   , .add-tool-button,
+  .remove-button, .remove-tool-button, 
+  .edit-button  , .edit-tool-button, 
+  .expand-button, .expandButton, .expandButton,
+  .ruble-button , .money-object-button{
+  -fx-padding: 2;
+  -fx-max-width: 30px;
+  -fx-max-height: 30px;
+  -fx-min-width: 30px;
+  -fx-min-height: 30px;
+  -fx-pref-width: 30px;
+  -fx-pref-height: 30px;
+}
+
+.print-button {
+  -fx-graphic: url("img/print.png");
+}
+
+.print-complect-button {
+  -fx-graphic: url("img/print-complect.png");
+}
+
+.preview-button {
+  -fx-graphic: url("img/preview.png");
+}
+
+.export-pdf {
+  -fx-graphic: url("img/pdf.png");
+}
+
+.export-rtf {
+  -fx-graphic: url("img/rtf.png");
+}
+.question-button {
+  -fx-graphic: url("img/question.png");
+}
+
+.export-fo {
+  -fx-graphic: url("img/xml_ico.gif");
+}
+
+.export-png {
+  -fx-graphic: url("img/png.png");
+}
+
+.send-email {
+  -fx-graphic: url("img/email.png");
+}
+
+.next-page {
+  -fx-graphic: url("img/right-arrow.png");
+}
+
+.prev-page {
+  -fx-graphic: url("img/left-arrow.png");
+}
+
+
+.menu-button {
+  -fx-max-height: 30px;
+  -fx-min-height: 30px;
+}
+
+.add-button, .add-tool-button, .add-menu-button {
+  -fx-graphic: url("img/add24.png");
+}
+
+.remove-button, .remove-tool-button {
+  -fx-graphic: url("img/remove24.png");
+}
+
+.edit-button, .edit-tool-button {
+  -fx-graphic: url("img/edit24.png");
+}
+
+.expand-button, .expandButton, .expandButton {
+  -fx-graphic: url("img/show-all.png");
+}
+
+.ruble-button {
+  -fx-graphic: url("img/ruble.png");
+}
+
+.money-button {
+  -fx-graphic: url("img/money.png");
+}
+
+.money-object-button {
+  -fx-graphic: url("img/money-object.png");
+}
+
+.check-item {
+  -fx-graphic: url("img/check.gif");
+}
+
+.uncheck-item {
+  -fx-graphic: url("img/no-check.gif");
+}
+
+.link-label {
+  -fx-cursor: hand;
+  -fx-text-fill: blue;
+  -fx-font-weight: bold;
+}
+
+.link-label:hover {
+  -fx-text-fill: red;
+}

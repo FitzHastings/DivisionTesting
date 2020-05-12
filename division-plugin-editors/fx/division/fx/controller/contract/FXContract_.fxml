@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import division.fx.*?>
+<?import division.fx.table.*?>
+<?import division.fx.controller.company.*?>
+<?import division.fx.scale.*?>
+<?import division.fx.border.titleborder.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane fx:id="rootSplit" dividerPositions="0.5" orientation="VERTICAL" stylesheets="@FXContract.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <items>
+      <VBox alignment="TOP_RIGHT" maxHeight="360.0" minHeight="40.0" spacing="5.0">
+         <children>
+            <Label fx:id="contractLabel" onMouseClicked="#contractLableClick" text="Договор" textFill="#3609ff" underline="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+            <Separator />
+            <HBox alignment="CENTER">
+               <children>
+                  <CompanySelector fx:id="seller" companyTitleText="Продавец" HBox.hgrow="ALWAYS" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" mnemonicParsing="false" text="&gt;&#10;&lt;" />
+                  <CompanySelector fx:id="customer" companyTitleText="Покупатель" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <TitleBorderPane title="Срок действия Договора">
+               <center>
+                  <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="Длительность " HBox.hgrow="ALWAYS" />
+                        <DivisionTextField fx:id="durationCount" />
+                        <ChoiceBox fx:id="durationType" prefWidth="150.0" />
+                        <Label alignment="CENTER_RIGHT" text="Начало " HBox.hgrow="ALWAYS">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <DatePicker fx:id="startDate" HBox.hgrow="ALWAYS" />
+                        <Label alignment="CENTER_RIGHT" text="Окончание " HBox.hgrow="ALWAYS">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <DatePicker fx:id="endDate" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </center>
+            </TitleBorderPane>
+         </children>
+      </VBox>
+      <TabPane tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="План-график">
+               <content>
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL">
+                     <items>
+                        <SplitPane fx:id="dealSplit" dividerPositions="0.2531083481349911, 0.7921847246891652">
+                           <items>
+                              <FXDivisionTable fx:id="processTable">
+                                 <columns>
+                                    <TableColumn fx:id="processColumn" prefWidth="144.0">
+                                       <graphic>
+                                          <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                             <children>
+                                                <Label text="Процесс" />
+                                                <Button fx:id="addProcessButton" mnemonicParsing="false" onAction="#addProcessAction" styleClass="add-process-button" text="+" />
+                                                <Button fx:id="removeProcessButton" mnemonicParsing="false" onAction="#removeProcessAction" styleClass="remove-process-button" text="-" />
+                                             </children>
+                                          </HBox>
+                                       </graphic>
+                                    </TableColumn>
+                                    <TableColumn fx:id="partitionColumn" prefWidth="126.0" text="От покупателя" />
+                                 </columns>
+                              </FXDivisionTable>
+                              <DateScale fx:id="dateScale" prefHeight="195.0" prefWidth="54.0" />
+                              <FXDivisionTable fx:id="cfcTable">
+                                 <columns>
+                                    <TableColumn fx:id="cfcColumn" maxWidth="1.7976931348623157E308" prefWidth="100.0" text="От продавца (ЦФУ)" />
+                                 </columns>
+                              </FXDivisionTable>
+                           </items>
+                        </SplitPane>
+                        <TabPane minHeight="50.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab fx:id="positionTab" text="Позиции" />
+                           </tabs>
+                        </TabPane>
+                     </items>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </SplitPane>
+               </content>
+            </Tab>
+            <Tab text="Условия" />
+         </tabs>
+      </TabPane>
+   </items>
+</SplitPane>

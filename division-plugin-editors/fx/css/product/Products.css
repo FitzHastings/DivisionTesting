@@ -1,0 +1,157 @@
+.productTools {
+  -fx-pref-height: 52;
+  -fx-min-height:  52;
+  -fx-max-height:  52;
+}
+
+.editor-cell-edit {
+  -fx-background-color: white;
+  -fx-border-color: lightgray;
+  -fx-border-style: solid;
+  -fx-border-radius: 5;
+  -fx-border-width: 1;
+  -fx-padding: 5;
+}
+
+.createSectionMenu {
+  -fx-graphic: url("img/add.png");
+}
+
+/*.priceTable .scroll-bar:vertical * , .productTree  .scroll-bar:vertical * {
+  -fx-pref-width:0;
+  -fx-pref-height:0;
+}
+
+.priceTable .scroll-bar:horizontal * , .catalogTable  .scroll-bar:horizontal * {
+  -fx-pref-width:0;
+  -fx-pref-height:0;
+}
+
+.priceTable .table-row-cell, .catalogTable .table-row-cell, .productTree .tree-cell {
+  -fx-min-height:  25;
+  -fx-max-height:  25;
+  -fx-pref-height: 25;
+}*/
+
+.add-column-button {
+  -fx-graphic: url("img/add-column.png");
+}
+
+.add-row-button {
+  -fx-graphic: url("img/add-row.png");
+}
+
+.del-column-button {
+  -fx-graphic: url("img/del-column.png");
+}
+
+.del-row-button {
+  -fx-graphic: url("img/del-row.png");
+}
+
+.copy-button {
+  -fx-graphic: url("img/copy.png");
+}
+
+.paste-button {
+  -fx-graphic: url("img/paste.png");
+}
+
+
+
+.add-position-button, .remove-position-button {
+  -fx-graphic: url("img/arrow.png");
+}
+
+.add-position-button {
+  -fx-rotate: 180;
+}
+
+.groupLabel {
+  -fx-font-size: 12pt;
+  -fx-font-weight:bold;
+}
+
+.addToDealBox {
+  -fx-spacing: 10px;
+  -fx-padding: 5px;
+}
+
+.countField {
+  -fx-alignment: CENTER_RIGHT;
+}
+
+.countField {
+  -fx-font-size: 12pt;
+  -fx-font-weight:bold;
+}
+
+.countField {
+  -fx-min-width: 100px;
+}
+
+.productLabel {
+  -fx-font-size: 20pt;
+  -fx-font-weight:bold;
+}
+
+.tree-table-cell {
+  -fx-text-fill: inherit;
+}
+
+.table-row-cell .text-field {
+  -fx-min-height:  22;
+  -fx-max-height:  22;
+  -fx-pref-height: 22;
+}
+
+.table-row-cell.zakaz-row {
+  -fx-background-color: lightgray;
+}
+
+.last-price-object {}
+
+.product-item {
+  -fx-text-fill: darkgreen;
+}
+
+.product-tree-cell .text-label-box, .product-tree-cell .choise-label-box, .factor-cell-in-price .choise-label-box, .factor-cell-in-price .text-label-box {
+  -fx-border-style: none;
+  -fx-border-width: 0;
+  -fx-padding: 0;
+  -fx-border-insets: 0;
+  -fx-max-width: 1000px;
+  -fx-text-fill: inherit;
+}
+
+.editor-box {
+  -fx-alignment: center-right;
+}
+
+.product-tree-cell .text-label-value {
+  -fx-min-width: 40px;
+  -fx-alignment: center-right;
+}
+
+.product-item .text-label-field {
+  -fx-alignment: center-right;
+}
+
+.product-item .choise-label-box {
+  -fx-min-width: 75px;
+}
+
+.sub-price-object {}
+
+.process-row {
+  -fx-text-fill: darkblue;
+}
+
+.product-count-type-editor {
+  -fx-background-color: white;
+  -fx-border-color: lightgray;
+  -fx-border-style: solid;
+  -fx-border-radius: 5;
+  -fx-border-width: 1;
+  -fx-padding: 5;
+}

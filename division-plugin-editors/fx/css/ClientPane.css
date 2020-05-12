@@ -1,0 +1,506 @@
+@import "column-filter.css";
+@import "desktop/fx-internal-frame.css";
+@import "desktop/fx-desktop-pane.css";
+@import "float-panel.css";
+@import "payment-table.css";
+@import "fx-editor.css";
+@import "scale/DateScale.css";
+@import "store/Store.css";
+@import "deal/Deal.css";
+@import "product/Products.css";
+@import "buttons.css";
+@import "demons/RequestDemon.css";
+
+.FXAccount .accLabel {
+  -fx-min-width: 75px;
+}
+
+.FXPartitionDetails .grid, .FXPartitionDetails .contactGrid {
+  -fx-hgap: 5;
+  -fx-vgap: 5;
+}
+
+.FXCompany_ .topBorders {
+  -fx-max-height: 175px;
+  -fx-background-color: inherit;
+}
+
+.FXCompany_ .title-border-pane {
+  -fx-background-color: #f4f4f4;
+}
+
+.FXCompany_ .addressBorder .title-border-label-pane {
+  -fx-max-height: 5px;
+  -fx-min-height: 5px;
+  -fx-pref-height: 5px;
+}
+
+.FXCompany_ .addressBorder .text-area {
+  -fx-min-height: 50px;
+  -fx-max-height: 50px;
+}
+
+.FXCompany_ .FXPartitionDetails .accountBorder .title-border-lable-tool {
+  -fx-padding: 0 5 -5 10;
+}
+
+.FXCompany_ .FXPartitionDetails .accountContactBox {
+  -fx-padding: 10 0 0 0;
+}
+
+.FXCompany_ .FXPartitionDetails .title-border-lable-tool {
+  -fx-background-color: inherit;
+}
+
+.FXCompany_ .ownerTypeChoice {
+  -fx-padding: 0;
+}
+
+.FXCompany_ .ownerTypeBorder .title-border-lable-tool {
+  -fx-padding: 0 5 -5 0;
+}
+
+.FXCompany_ .firstPerson, .FXCompany_ .secondPerson {
+  -fx-border-width: 0px;
+}
+
+.FXCompany_ .chifSignatureBox, .FXCompany_ .bookkeeperSignatureBox {
+  -fx-min-width: 100px;
+}
+
+.FXCompany_ .firstPersonText {
+  -fx-max-width: 1000px;
+}
+
+.FXCompany_ .ownerTypeChoice, .FXCompany_ .rootSplit, .FXCompany_ .partitionBox{
+  -fx-border-width: 0px;
+}
+
+.FXCompany_ .ownerTypeBorder {
+  -fx-min-height: 0px;
+  /*-fx-max-height: 180px;*/
+  -fx-background-color: inherit;
+}
+
+.FXCompany_ .rootSplit {
+  -fx-border-width: 0px;
+  -fx-border-color: gray;
+  -fx-border-style: none;
+}
+
+.ImageBox {
+  -fx-cursor: hand;
+}
+
+
+
+
+.FXStoreForProducts .countField {
+  -fx-alignment: CENTER_RIGHT;
+}
+
+.FXStoreForProducts .countField {
+  -fx-font-size: 12pt;
+  -fx-font-weight:bold;
+}
+
+.FXStoreForProducts.countField {
+  -fx-min-width: 200px;
+  -fx-max-width: 200px;
+  -fx-pref-width: 200px;
+}
+
+.FXStoreForProducts .positionPane .title-border-lable-tool {
+  -fx-max-height: 20px;
+  -fx-min-height: 20px;
+  -fx-pref-height: 20px;
+  -fx-translate-x: 0;
+}
+
+.FXStoreForProducts .positionPane .title-border-label-pane {
+  -fx-alignment: CENTER_RIGHT;
+  -fx-padding: 2 50 0 0;
+}
+
+.FXDealFinalStep .spinner {
+  -fx-max-width:  100px;
+  -fx-min-width:  100px;
+  -fx-pref-width: 100px;
+}
+
+.FXDealFinalStep .processLabel, .FXDealFinalStep .startDealDateLabel {
+  -fx-font-size: 20pt;
+  -fx-font-weight:bold;
+}
+
+.FXDealFinalStep .startDealDateLabel {
+  -fx-border-width: 0px;
+}
+
+.FXDealFinalStep .endDealDateLabel {
+  -fx-text-fill: gray;
+}
+
+
+
+
+.FXPayment_1 .sideGrid {
+  -fx-background-color: inherit;
+}
+
+.FXPayment_1 .sellerBox, .FXPayment_1 .customerBox {
+  -fx-spacing: 5px;
+}
+
+.FXPayment_1 .topBox {
+  -fx-spacing: 5px;
+}
+
+.FXPayment_1 .sellerDocuments, .FXPayment_1 .customerDocuments {
+  -fx-max-height: 100px;
+}
+
+.FXPayment_1 .sellerStoreChooser, .FXPayment_1 .customerStoreChooser {
+  -fx-max-width: 1000;
+}
+
+.FXPayment_1 .dealTable {
+  -fx-min-height: 100px;
+}
+
+
+
+.FXGroup .nameField, 
+.FXGroup .unitField,
+.FXFactor .nameField, 
+.FXFactor .unitField,
+.FXFactor .type {
+  -fx-font-size: 20 pt;
+  -fx-font-weight: bold;
+}
+
+.FXGroup .choise-label-menu, .FXFactor .choise-label-menu {
+  -fx-font-size: 12 pt;
+}
+
+.FXGroup.topBox, .FXFactor.topBox {
+  -fx-alignment: center-right;
+}
+
+
+
+
+.tooltip {    
+    -fx-background-color: linear-gradient(#e2ecfe, #99bcfd);
+}
+
+.page-corner {
+    -fx-background-color: linear-gradient(from 0% 0% to 50% 50%,#3278fa,#99bcfd);
+}
+
+.table-row-cell:empty {
+    -fx-background-color: WHITE;
+}
+ 
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
+
+.task-panel {
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-width: 0.5;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+  -fx-min-width: 150;
+  -fx-max-width: 150;
+  -fx-min-height: 20;
+  -fx-max-height: 20;
+  -fx-font-weight: bold;
+  -fx-cursor: hand;
+  -fx-background-color: aliceblue;
+}
+
+.title-label-panel {
+  -fx-text-fill: gray;
+  -fx-padding: 1 5 1 5;
+}
+
+.task-dialog {
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-width: 0.5;
+  -fx-border-radius: 10;
+  -fx-background-radius: 10;
+  -fx-min-width: 350;
+  -fx-background-color: lavender;
+  -fx-cursor: default;
+  -fx-spacing: 10;
+}
+
+.task-deal-grid {
+  -fx-vgap: 5;
+  -fx-hgap: 5;
+}
+
+.costbox {
+  -fx-alignment: CENTER_LEFT;
+}
+
+.contractLabel {
+  -fx-font-size: 15pt;
+  -fx-font-weight: bold;
+}
+
+.amountLabel {
+  -fx-font-size: 15pt;
+  -fx-font-weight: bold;
+  -fx-alignment: CENTER_RIGHT;
+}
+
+.buttonbox {
+  -fx-alignment: CENTER_RIGHT;
+}
+
+.buttonbox .button {
+  -fx-text-fill: gray;
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-width: 0.5;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+  -fx-background-color: lavender;
+}
+
+.buttonbox .button:hover {
+  -fx-background-color: aliceblue;
+}
+
+.buttonbox .button:pressed {
+  -fx-background-color: lightgray;
+}
+
+.task-deal-grid .label {
+  -fx-text-fill: gray;
+}
+
+.task-box {
+  -fx-padding: 5 5 10 5;
+}
+
+.title-box {
+  -fx-padding: 1 5 1 5;
+  -fx-alignment: CENTER_RIGHT;
+}
+
+.title-label {
+  -fx-text-fill: gray;
+  -fx-padding: 1 5 1 5;
+  -fx-alignment: center;
+  -fx-max-width: 500px;
+}
+
+.title-button {
+  -fx-text-fill: gray;
+  -fx-cursor: hand;
+  -fx-padding: 1 5 1 5;
+}
+
+.item-task-label {
+  -fx-cursor: hand;
+  -fx-text-fill: gray;
+  -fx-padding: 1 5 5 5;
+}
+
+.countField, .costField, .startDatePicker {
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-radius: 5;
+  -fx-border-width: 0.5;
+  -fx-text-fill: gray;
+  -fx-background-color: aliceblue;
+}
+
+.startDatePicker .text-field {
+  -fx-background-color: aliceblue;
+  -fx-text-fill: gray;
+}
+
+.countField {
+  -fx-max-width: 50px;
+}
+
+.costField {
+  -fx-max-width: 150px;
+}
+
+.label.link {
+  -fx-text-fill: lightslategray;
+  -fx-cursor: hand;
+}
+
+.label.link:hover {
+  -fx-text-fill: lightcoral;
+}
+
+
+
+.FXContract_ .topBox {
+  -fx-min-height: 0px;
+  -fx-max-height: 210px;
+  -fx-background-color: inherit;
+}
+
+
+
+
+
+
+.tree-item-drag-over {
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-width: 0.5;
+}
+
+.leftTool .label {
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-padding: 2;
+}
+
+.leftTool .label:selected {
+  -fx-background-color: lightgray;
+}
+
+.leftTool {
+  -fx-min-width: 0;
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-width: 0.5;
+  -fx-padding: 5 2 5 2;
+  -fx-background-color: rgba(0, 0, 0, 0.2);
+}
+
+.leftTool:empty {
+  -fx-pref-width: 0;
+}
+
+.link-label {
+  -fx-text-fill: blue;
+  -fx-cursor: hand;
+}
+
+.link-label:hover {
+  -fx-text-fill: red;
+}
+
+.link-label:disabled {
+  -fx-opacity: 1;
+  -fx-text-fill: gray;
+  -fx-cursor: default;
+}
+
+.text-label-box, 
+.choise-label-box, 
+.date-label-box, 
+.popup-label-box {
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-width: 0.5;
+  -fx-border-radius: 5px;
+  -fx-padding: 2 5 2 5;
+  -fx-border-insets: 2 5 2 5;
+  -fx-max-width: 1000px;
+}
+
+.text-label-value,
+.choise-label-value, 
+.date-label-value, 
+.popup-label-value, 
+
+.text-label-name,
+.choise-label-name, 
+.date-label-name, 
+.popup-label-name {
+  -fx-padding: 2 5 2 5;
+  -fx-text-fill: blue;
+  -fx-cursor: hand;
+}
+
+.text-label-value:hover,
+.choise-label-value:hover, 
+.date-label-value:hover, 
+.popup-label-value:hover {
+  -fx-text-fill: red;
+}
+
+
+
+
+.tree-cell .tree-disclosure-node .arrow {
+  -fx-translate-y: -4;
+}
+
+.tree-cell:expanded .tree-disclosure-node .arrow {
+  -fx-translate-y: -2;
+}
+
+.tree-table-row-cell .tree-disclosure-node .arrow, 
+.tree-cell .tree-disclosure-node .arrow {
+  -fx-rotate: 0;
+  
+  -fx-min-width:16;
+  -fx-max-width:16;
+  -fx-pref-width:16;
+  
+  -fx-min-height:16;
+  -fx-max-height:16;
+  -fx-pref-height:16;
+  
+  -fx-shape: null;
+  -fx-background-color: null;
+  /*-fx-background-image: url("img/dir.png");*/
+  -fx-background-image: url("img/plus-16x16.gif");
+  -fx-background-repeat: no-repeat;
+}
+
+.tree-table-row-cell:expanded .tree-disclosure-node .arrow, 
+.tree-cell:expanded .tree-disclosure-node .arrow {
+  -fx-rotate: 0;
+  
+  -fx-min-width:16;
+  -fx-max-width:16;
+  -fx-pref-width:16;
+  
+  -fx-min-height:16;
+  -fx-max-height:16;
+  -fx-pref-height:16;
+  
+  -fx-shape: null;
+  -fx-background-color: null;
+  /*-fx-background-image: url("img/open-dir.gif");*/
+  -fx-background-image: url("img/minus-16x16.gif");
+  -fx-background-repeat: no-repeat;
+}
+
+/*REFRESH: 28.01.2019 11:31:54*/
+
+/*REFRESH: 28.01.2019 11:32:11*/
+
+/*REFRESH: 28.01.2019 11:33:11*/
+
+/*REFRESH: 28.01.2019 11:33:56*/
+
+/*REFRESH: 28.01.2019 11:34:09*/
+
+/*REFRESH: 28.01.2019 11:34:38*/
+
+/*REFRESH: 28.01.2019 11:34:39*/
+
+/*REFRESH: 28.01.2019 11:34:51*/
+
+/*REFRESH: 28.01.2019 11:34:53*/
+
+/*REFRESH: 28.01.2019 11:35:08*/
+
+/*REFRESH: 28.01.2019 12:12:51*/

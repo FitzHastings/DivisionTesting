@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import division.fx.border.titleborder.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER_RIGHT" styleClass="store" stylesheets="@FXStore.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="storeName" promptText="Наименование..." VBox.vgrow="NEVER" />
+      <GridPane>
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints valignment="CENTER" vgrow="NEVER" />
+        </rowConstraints>
+         <children>
+            <ComboBox fx:id="storeType" maxWidth="1.7976931348623157E308" GridPane.hgrow="ALWAYS">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin></ComboBox>
+            <ComboBox fx:id="storeObjectType" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></ComboBox>
+         </children>
+      </GridPane>
+      <Label fx:id="currencyLabel" styleClass="currency-label" text="Валюта" />
+      <CheckBox fx:id="creditControll" mnemonicParsing="false" text="контроль расхода" />
+   </children>
+</VBox>

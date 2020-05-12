@@ -1,0 +1,18 @@
+.FXDesktopPane {
+}
+
+.FXDesktopPane .frameBar .toggle-button {
+  -fx-min-height: 25;
+  -fx-max-height: 25;
+  -fx-min-width: 110;
+  -fx-max-width: 110;
+}
+
+.frameBar {
+  -fx-background-color: white;
+  -fx-spacing: 1;
+}
+
+.desktop {
+  -fx-background-color: rgba(255, 255, 255, 0.2);
+}

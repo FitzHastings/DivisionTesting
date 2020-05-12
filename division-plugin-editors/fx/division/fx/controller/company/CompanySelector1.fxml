@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import division.fx.*?>
+<?import javafx.scene.layout.*?>
+<?import division.fx.border.titleborder.*?>
+<?import java.lang.*?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="link-panel" stylesheets="@CompanySelector.css" title="Сторона" type="TitleBorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextArea fx:id="name" editable="false" focusTraversable="false" minHeight="25.0" prefHeight="25.0" promptText="Наименование..." wrapText="true" VBox.vgrow="ALWAYS" />
+            <HBox spacing="5.0">
+               <children>
+                  <VBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label text="Группа" />
+                        <Label text="Подразделение" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ChoiceBox fx:id="group" maxWidth="1.7976931348623157E308" />
+                        <ChoiceBox fx:id="partition" maxWidth="1.7976931348623157E308" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <TitleBorderPane styleClass="inface-panel" title="В лице">
+               <center>
+                  <VBox spacing="5.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox spacing="5.0">
+                           <children>
+                              <DivisionTextField fx:id="place" promptText="Должность..." HBox.hgrow="ALWAYS" />
+                              <DivisionTextField fx:id="fio" promptText="Фамилия, инициалы..." HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label text="действующего на основании" />
+                              <DivisionTextField fx:id="reason" promptText="Устав / Доверенность..." HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </center>
+            </TitleBorderPane>
+         </children>
+      </VBox>
+   </center>
+</fx:root>

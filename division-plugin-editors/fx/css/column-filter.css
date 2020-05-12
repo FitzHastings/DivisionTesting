@@ -1,0 +1,30 @@
+.column-filter, .column-filter * {
+  -fx-spacing: 10;
+}
+
+.filter-button {
+  -fx-max-width:20;
+  -fx-max-height:20;
+  
+  -fx-min-width:20;
+  -fx-min-height:20;
+  
+  -fx-pref-width:20;
+  -fx-pref-height:20;
+  
+  -fx-padding: 0;
+}
+
+.column-filter {
+  -fx-border-style: solid;
+  -fx-border-width:1;
+  -fx-border-color: gray;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+  -fx-background-color: white;
+  -fx-padding: 15;
+}
+
+.column-filter .border-pane {
+  -fx-background-color: inherit;
+}

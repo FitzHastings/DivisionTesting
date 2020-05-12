@@ -1,0 +1,125 @@
+{
+  "menubar": [
+    {
+      "items": [
+        {
+          "items": [
+            {
+              "name": "Договоры",
+              "plugin-class": "division.fx.client.plugins.Contracts",
+              "single": true
+            },
+            {
+              "img": "",
+              "name": "Сделки",
+              "plugin-class": "division.fx.client.plugins.deal.test.FXDealTable",
+              "single": true
+            },
+            {
+              "img": "",
+              "name": "Платежи",
+              "plugin-class": "division.fx.client.plugins.Payments",
+              "single": true
+            },
+            {
+              "img": "",
+              "name": "Документы",
+              "plugin-class": "division.fx.client.plugins.CreatedDocuments",
+              "separator": {
+                "value": "1"
+              },
+              "single": true
+            },
+            {
+              "fxml": "fx/division/fx/controller/product/Products.fxml",
+              "img": "",
+              "name": "Продукты",
+              "plugin-class": "division.fx.client.plugins.product.Products",
+              "single": true
+            },
+            {
+              "img": "",
+              "name": "Процессы",
+              "plugin-class": "division.fx.client.plugins.Processes",
+              "single": true
+            },
+            {
+              "img": "",
+              "name": "Объекты",
+              "plugin-class": "division.fx.client.plugins.Groups",
+              "single": true
+            }
+          ],
+          "name": "Открыть"
+        }
+      ],
+      "name": "Файл"
+    },
+    {
+      "items": [
+        {
+          "fxml": "fx/division/fx/controller/config/FXDivisionConfig.fxml",
+          "img": "",
+          "name": "Настройки соединения",
+          "plugin-class": "division.fx.client.plugins.FXDivisionConfig",
+          "single": true
+        },
+        {
+          "fxml": "fx/division/plugins/events/ActionDocuments.fxml",
+          "img": "",
+          "name": "События и документы",
+          "plugin-class": "division.fx.client.plugins.ActionDocuments",
+          "single": true
+        }
+      ],
+      "name": "Настройка"
+    }
+  ],
+  "smtp": {
+    "host": "smtp.masterhost.ru",
+    "port": 25,
+    "user": "mail@dnc.ru",
+    "password": "1qaz2WSX3edc4RFV"
+  },
+  "messanger": {
+    "host": "5.133.111.178",
+    "port": 61616,
+    "protocol": "tcp"
+  },
+  "server": {
+    "connection-count": 1,
+    "host": "127.0.0.1",
+    "name": "division-server",
+    "port": 7002,
+    "timeout": 2
+  },
+  "gui-state-path":"conf/gui",
+  
+  "REST": {
+    "fio"     : "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/fio",
+    "address" : "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address",
+    "party"   : "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party",
+    "bank"    : "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/bank",
+    "email"   : "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/email",
+    "json-key": "query",
+    "headers" : [
+      {
+        "name" : "Content-Type",
+        "value": "application/json"
+      },
+      {
+        "name" : "Authorization",
+        "value": "Token a5ff34da93cc7ce2fa0e37d556d05218b998a648"
+      }
+    ]
+  },
+  "http": {
+    "proxyHost"    : "192.168.1.1",
+    "proxyPort"    : 3128,
+    "proxySet"     : true,
+    "proxyAuth"    : false,
+    "proxyUser"    : "",
+    "proxyPassword":"",
+    "nonProxyHosts": "127.0.0.1|localhost"
+  }
+}

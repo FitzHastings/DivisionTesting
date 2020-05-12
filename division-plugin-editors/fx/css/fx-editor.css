@@ -1,0 +1,80 @@
+.tools .text-field {
+  -fx-max-height: 20;
+}
+
+.tree-table-row-cell {
+  -fx-indent: 8;
+}
+
+
+
+/*.dir-tree .tree-cell .tree-disclosure-node .arrow {
+  -fx-translate-y: -4;
+}
+
+.dir-tree .tree-cell:expanded .tree-disclosure-node .arrow {
+  -fx-translate-y: -2;
+}
+
+.dir-tree .tree-table-row-cell .tree-disclosure-node .arrow, 
+.dir-tree .tree-cell .tree-disclosure-node .arrow {
+  -fx-rotate: 0;
+  
+  -fx-min-width:16;
+  -fx-max-width:16;
+  -fx-pref-width:16;
+  
+  -fx-min-height:16;
+  -fx-max-height:16;
+  -fx-pref-height:16;
+  
+  -fx-shape: null;
+  -fx-background-color: null;
+  -fx-background-image: url("img/dir.png");
+}
+
+.dir-tree .tree-table-row-cell:expanded .tree-disclosure-node .arrow, 
+.dir-tree .tree-cell:expanded .tree-disclosure-node .arrow {
+  -fx-rotate: 0;
+  
+  -fx-min-width:16;
+  -fx-max-width:16;
+  -fx-pref-width:16;
+  
+  -fx-min-height:16;
+  -fx-max-height:16;
+  -fx-pref-height:16;
+  
+  -fx-shape: null;
+  -fx-background-color: null;
+  -fx-background-image: url("img/open-dir.gif");
+}*/
+
+
+
+
+.tree-table-cell {
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-width: 0.3;
+}
+
+.table-cell {
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-width: 0.3;
+}
+
+.table-cell:disabled {
+  -fx-background-color: lightgray;
+  -fx-text-fill: red;
+}
+
+/*.table-cell:selected {
+  -fx-background-color: lightgray;
+  -fx-text-fill: red;
+}*/
+
+.storno {
+  -fx-text-fill: red;
+}

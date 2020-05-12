@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import division.fx.border.titleborder.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <items>
+      <TitleBorderPane title="События">
+         <center>
+            <VBox spacing="5.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToolBar>
+                    <items>
+                      <Button mnemonicParsing="false" text="Button" />
+                        <Button mnemonicParsing="false" text="Button" />
+                    </items>
+                  </ToolBar>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Событие" />
+                      <TableColumn prefWidth="75.0" text="дата" />
+                        <TableColumn prefWidth="75.0" text="дебет" />
+                        <TableColumn prefWidth="75.0" text="кредит" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </VBox>
+         </center>
+      </TitleBorderPane>
+      <TitleBorderPane title="Документы">
+         <center>
+            <VBox spacing="5.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToolBar>
+                     <items>
+                        <Button mnemonicParsing="false" text="Button" />
+                        <Button mnemonicParsing="false" text="Button" />
+                     </items>
+                  </ToolBar>
+                  <TableView prefHeight="200.0" prefWidth="200.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Документ" />
+                        <TableColumn prefWidth="75.0" text="номер" />
+                        <TableColumn prefWidth="75.0" text="дата" />
+                        <TableColumn prefWidth="75.0" text="агент" />
+                        <TableColumn prefWidth="75.0" text="контрагент" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </VBox>
+         </center>
+      </TitleBorderPane>
+   </items>
+</SplitPane>

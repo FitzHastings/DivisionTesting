@@ -1,0 +1,74 @@
+.FinishPaymentTable {
+}
+
+.table-row-cell:finish {
+  -fx-text-background-color: gray;
+}
+
+.table-row-cell:finish:selected {
+  -fx-text-background-color: white;
+}
+
+//other classes: label
+.oborotiTextLabel {
+  -fx-alignment: CENTER;
+}
+
+//other classes: label
+.sumDebetLabel {
+}
+
+//other classes: label
+.sumCreditLabel {
+}
+
+.oborotiRow {
+}
+
+//other classes: label
+.saldoTextLabel {
+  -fx-alignment: CENTER;
+}
+
+//other classes: label
+.saldoLabel {
+}
+
+.saldoRow {
+}
+
+//other classes: label
+.inputTextLabel {
+  -fx-alignment: CENTER;
+}
+
+//other classes: label
+.inputLabel {
+}
+
+.inputRow {
+}
+
+//other classes: label
+.outputTextLabel {
+  -fx-alignment: CENTER;
+}
+
+//other classes: label
+.outputLabel {
+}
+
+.outputRow {
+}
+
+.sumDebetLabel, .sumCreditLabel, .saldoLabel, .inputLabel, .outputLabel {
+  -fx-alignment: CENTER_RIGHT;
+}
+
+.bottomPane .label {
+  -fx-border-color: gray;
+  -fx-border-style: solid;
+  -fx-border-width: 0.5;
+  -fx-padding: 2;
+}
+

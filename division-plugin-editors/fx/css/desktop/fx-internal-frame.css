@@ -1,0 +1,56 @@
+.closeButton, .minimizeButton, .maximizeButton{
+  -fx-min-width:  16;
+  -fx-max-width:  16;
+  -fx-min-height: 16;
+  -fx-max-height: 16;
+  -fx-background-color: #97b578;
+  -fx-cursor: default;
+  
+  -fx-border-width: 2;
+  -fx-border-color: #687e51;
+  -fx-border-radius: 3;
+  -fx-focus-traversable: false;
+  
+  -fx-alignment: CENTER;
+}
+
+.closeButton {
+  -fx-graphic: url("img/close.png");
+}
+
+.minimizeButton {
+  -fx-graphic: url("img/minimize.png");
+}
+
+.maximizeButton {
+  -fx-graphic: url("img/maximize.gif");
+}
+
+.closeButton:hover, .minimizeButton:hover, .maximizeButton:hover {
+  -fx-background-color: #a9c887;
+}
+
+.buttonBar {
+  -fx-spacing: 2;
+}
+
+.windowPane {
+  -fx-background-color: white;
+  -fx-border-width: 2;
+  -fx-border-radius: 3;
+  -fx-border-color: #687e51;
+}
+
+.titleBar {
+  -fx-background-color: #97b578;
+  -fx-padding: 2;
+}
+
+.title {
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+}
+
+.contentPane {
+  -fx-padding: 5;
+}

@@ -1,0 +1,227 @@
+.header-scroll, .scale-header, .leftTable .table-row-cell, .leftTable .table-column, .rightTable .table-row-cell, .rightTable .table-column {
+  -fx-max-height: 20;
+  -fx-min-height: 20;
+  -fx-pref-height: 20;
+}
+
+.scale-header {
+  -fx-background-color: lightgrey;
+}
+
+.header-scroll, .root-scroll {
+  -fx-border-width: 0;
+  -fx-vbar-policy: never;
+}
+
+.header-scroll {
+  -fx-hbar-policy: never;
+}
+
+.ScaleTable {
+  -fx-background-color: red;
+}
+
+.root-scroll, .left-table .scroll-bar, .right-table .scroll-bar {
+  /*-fx-hbar-policy: always;*/
+}
+
+.leftTable .scroll-bar:vertical * {
+  -fx-pref-width:0;
+  -fx-pref-height:0;
+}
+
+.header-scroll .scroll-bar:vertical, .header-scroll .scroll-bar:vertical * {
+  -fx-opacity: 0;
+}
+
+.scale-header-column, .scale-period {
+  -fx-background-insets: 1;
+  -fx-background-color: rgba(96, 96, 96, 0.3);
+}
+
+.scale-period.started {-fx-background-color: rgba(255, 142, 0, 0.4);}
+.scale-period.started.dispatched {-fx-background-color: rgba(255, 0, 0, 0.3);}
+.scale-period.started.payed {-fx-background-color: rgba(0, 0, 255, 0.3);}
+.scale-period.started.payed.dispatched {-fx-background-color: rgba(0, 255, 0, 0.3);}
+
+.scale-header-column .label {
+  -fx-text-fill: BLACK;
+  -fx-translate-x: 5;
+  -fx-translate-y: 2;
+}
+
+.row-layer {
+  -fx-background-color: gray;
+}
+
+.scale-row {
+  -fx-background-insets: 0.2;
+  -fx-background-color: white;
+}
+
+.scale-row:focused {
+  -fx-border-color: black;
+  -fx-border-width: 0.5px;
+  -fx-border-style: solid;
+  -fx-border-insets: 0.5;
+}
+
+.focused-layer * {
+  -fx-border-color: black;
+  -fx-border-width: 0.5px;
+  -fx-border-style: solid;
+  -fx-border-insets: 0.5;
+}
+
+.focused-layer {
+  
+}
+
+.selected-layer * {
+  -fx-background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+.client-layer {
+}
+
+.column-selected-region {
+  -fx-border-width: 0 1 0 1;
+  -fx-border-color: grey;
+}
+
+.comment {
+  -fx-pref-width: 10;
+  -fx-pref-height: 10;
+  -fx-background-color: darkgreen;
+}
+
+.scale-tool-tip {
+  -fx-translate-x: 5;
+  -fx-translate-y: 5;
+  -fx-max-width: 300px;
+  -fx-background-color: rgba(255, 255, 255, 0.5);
+  -fx-border-color: lightgray;
+  -fx-border-width: 0.5px;
+  -fx-border-style: solid;
+  -fx-border-insets: 0.5;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+}
+
+.scale-tool-tip .label {
+  -fx-padding: 5px;
+  -fx-wrap-text: true;
+  -fx-max-width: 280px;
+}
+
+.comment-1 {
+  -fx-background-color: rgba(220, 220, 220, 0.5);
+}
+
+.comment-0 {
+  -fx-background-color: rgba(255, 255, 255, 0.5);
+}
+
+.avtor-box {
+  -fx-alignment: TOP_RIGHT;
+}
+
+.avtor-box .label {
+  -fx-font-size: 10;
+}
+
+.comments-box {
+  -fx-spacing: 30px;
+  -fx-padding: 20px;
+  -fx-alignment: CENTER_RIGHT;
+}
+
+.comment-edit-box {
+  -fx-pref-height: 100px;
+  -fx-min-height: 100px;
+  -fx-pref-width: 200px;
+  -fx-min-width: 400px;
+  -fx-max-width: 400px;
+  -fx-border-color: GRAY;
+  -fx-border-width: 0.5px;
+  -fx-border-style: solid;
+  -fx-border-radius: 5px;
+  -fx-padding: 5px;
+  -fx-background-color: bisque;
+  -fx-background-radius: 5px;
+  -fx-spacing: 10px;
+  -fx-alignment: BOTTOM_RIGHT;
+}
+
+.comment-editor {
+  -fx-background-color: bisque;
+  -fx-border-color: GRAY;
+  -fx-border-width: 0.5px;
+  -fx-border-style: solid;
+  -fx-border-radius: 5px;
+}
+
+.comment-button {
+  -fx-max-height: 1000;
+  -fx-min-width: 30;
+}
+
+.comments-list {
+  -fx-padding: 20px;
+  -fx-spacing: 30px;
+  -fx-background-color: aliceblue;
+}
+
+.comments-list-scroll .scroll-bar:vertical {
+  -fx-background-radius: 5px;
+  -fx-hbar-policy: always;
+}
+
+.comments-list-scroll {
+  -fx-border-color: GRAY;
+  -fx-border-width: 0.5px;
+  -fx-border-style: solid;
+  -fx-border-radius: 5px;
+  /*-fx-padding: 3px;*/
+  -fx-pref-height: 1000;
+  -fx-min-height: 200;
+  -fx-background-radius: 5px;
+}
+
+.comment-list-box {
+  -fx-border-color: GRAY;
+  -fx-border-width: 0.5px;
+  -fx-border-style: solid;
+  -fx-border-radius: 20px;
+  -fx-padding: 10px;
+  -fx-background-radius: 20px;
+  -fx-max-width: 300px;
+  -fx-alignment: TOP_RIGHT;
+  -fx-spacing: 10px;
+  -fx-background-color: bisque;
+  -fx-cursor: hand;
+}
+
+.comment-list-box:hover {
+  -fx-border-color: blue;
+}
+
+.comment-list-row {
+  -fx-alignment: TOP_RIGHT;
+}
+
+.comment-list-box-text {
+  -fx-wrap-text: true;
+  -fx-font-size: 12pt;
+}
+
+.comment-list-box-avtor {
+  -fx-font-weight: bold;
+  -fx-font-size: 8pt;
+}
+
+.comment-list-box-date {
+  -fx-font-weight: bold;
+  -fx-font-size: 8pt;
+}

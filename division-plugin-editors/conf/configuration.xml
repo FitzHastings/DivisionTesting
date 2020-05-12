@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><configuration>
+  <machinery>
+    <scaner>
+      <port>/dev/ttyS0</port>
+      <speed>9600</speed>
+      <prefix/>
+      <suffix/>
+    </scaner>
+    <fiscal-printer id="186">ФР ШТРИХ-СЕРВИС</fiscal-printer>
+    <fiscal-printer id="187">ФР ШТРИХ-С</fiscal-printer>
+  </machinery>
+  <export>
+    <partition id="187">/home/russo/NetBeansProjects/Division/division-plugin-editors/fx/css/payment.css</partition>
+    <partition id="105">/home/russo/NetBeansProjects/Division/division-plugin-editors/bbb.css</partition>
+  </export>
+  <messanger>
+    <protocol>tcp</protocol>
+    <host>86.111.28.42</host>
+    <port>61616</port>
+  </messanger>
+  <proxy-server>
+    <host>192.168.1.1</host>
+    <port>3128</port>
+    <user/>
+    <password/>
+  </proxy-server>
+  <servers>
+    <server main="false" name="127.0.0.1" timeout="1">
+      <name>division-server</name>
+      <host>127.0.0.1</host>
+      <port>7002</port>
+    </server>
+    <server main="true" name="86.111.28.42" timeout="1">
+      <name>division-server</name>
+      <host>86.111.28.42</host>
+      <port>7004</port>
+    </server>
+  </servers>
+  <libs>
+    <dir>plugins</dir>
+  </libs>
+  <desktop>
+    <icon img="images/deals.png" name="Сделки" pluginclass="division.editors.tables.CleverDealTableEditor"/>
+  </desktop>
+</configuration>

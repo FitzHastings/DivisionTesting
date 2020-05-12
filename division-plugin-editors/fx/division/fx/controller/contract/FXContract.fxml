@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import division.fx.*?>
+<?import division.fx.table.*?>
+<?import division.fx.controller.company.*?>
+<?import division.fx.scale.*?>
+<?import division.fx.border.titleborder.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane fx:id="rootSplit" dividerPositions="0.5" orientation="VERTICAL" prefHeight="706.0" prefWidth="1148.0" stylesheets="@FXContract.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <items>
+      <VBox alignment="TOP_RIGHT" maxHeight="360.0" minHeight="40.0" spacing="5.0">
+         <children>
+            <Label fx:id="contractLabel" styleClass="link-label" text="Договор">
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+            <Separator />
+            <HBox alignment="CENTER">
+               <children>
+                  <CompanySelector fx:id="seller" companyTitleText="Продавец" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="changeCompany" alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" mnemonicParsing="false" text="&gt;&#10;&lt;" />
+                  <CompanySelector fx:id="customer" companyTitleText="Покупатель" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <TitleBorderPane title="Срок действия Договора">
+               <center>
+                  <HBox alignment="CENTER" fillHeight="false" spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" text="Начало " HBox.hgrow="ALWAYS">
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </Label>
+                        <DatePicker fx:id="startDate" HBox.hgrow="ALWAYS" />
+                        <CheckBox fx:id="endDateCheck" mnemonicParsing="false" text="Окончание">
+                           <HBox.margin>
+                              <Insets left="100.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                        <DatePicker fx:id="endDate" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </center>
+            </TitleBorderPane>
+         </children>
+      </VBox>
+      <TabPane prefHeight="2751.0" prefWidth="1151.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="planGrafic" text="План-график" />
+            <Tab text="Условия" />
+         </tabs>
+      </TabPane>
+   </items>
+</SplitPane>

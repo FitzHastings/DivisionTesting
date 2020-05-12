@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import division.fx.border.titleborder.*?>
+<?import javafx.scene.text.*?>
+<?import division.fx.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root fx:id="companyPane" styleClass="border-pane" stylesheets="@CompanySelector.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextArea fx:id="name" editable="false" focusTraversable="false" promptText="Наименование..." wrapText="true" VBox.vgrow="ALWAYS" />
+            <BorderPane fx:id="inFacePane" styleClass="border-pane">
+               <center>
+                  <VBox spacing="5.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <HBox spacing="5.0">
+                           <children>
+                              <TextField fx:id="fio" promptText="Фамилия, инициалы..." HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label text="действующего на основании" />
+                              <TextField fx:id="reason" promptText="Устав / Доверенность..." HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </center>
+               <top>
+                  <Label fx:id="inFaceLabel" styleClass="titleBorderLabel" text="В лице" BorderPane.alignment="TOP_LEFT" />
+               </top>
+            </BorderPane>
+            <HBox spacing="5.0">
+               <children>
+                  <ChoiceBox fx:id="cfcbox" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                  <ChoiceBox fx:id="partitionbox" maxWidth="1.7976931348623157E308"  HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Label fx:id="companyLabel" nodeOrientation="LEFT_TO_RIGHT" styleClass="titleBorderLabel" text="Организация" BorderPane.alignment="TOP_LEFT" />
+   </top>
+</fx:root>
