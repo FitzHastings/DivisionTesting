@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutomaticModuleUnloader">
+    <loaded-modules>
+      <module name="Straws" />
+    </loaded-modules>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2e745ac0-1420-4444-b7c7-1062645597cc" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/division-plugin-impl" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="ProjectId" id="1aXqLeUaA2C1ZmqHQnlQFNoq2KR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.31958762" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ClientMain">
+    <configuration name="ClientMain (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="division.ClientMain" />
+      <module name="division-plugin-editors" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="division.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="division.ClientMain" />
+      <module name="Straws" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/division-plugin-editors" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="division.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DivisionServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="division.server.DivisionServer" />
+      <module name="Straws" />
+      <option name="PROGRAM_PARAMETERS" value="start" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/division-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="division.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ClientMain" />
+      <item itemvalue="Application.DivisionServer" />
+      <item itemvalue="Application.ClientMain (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ClientMain" />
+        <item itemvalue="Application.DivisionServer" />
+        <item itemvalue="Application.ClientMain (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2e745ac0-1420-4444-b7c7-1062645597cc" name="Default Changelist" comment="" />
+      <created>1586892231076</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586892231076</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/division-plugin-editors/src/division/ClientMain.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/division-editors/src/bum/editors/util/ObjectLoader.java</url>
+          <line>233</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/division-mapping/src/util/Session.java</url>
+          <line>1507</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

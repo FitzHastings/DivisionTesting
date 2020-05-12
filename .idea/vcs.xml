@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/division-documents" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-editors" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-fx" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-impl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-interfaces" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-mapping" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-plugin-editors" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-plugin-impl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-plugin-interfaces" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-server" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-swing" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-updater" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/division-utils" vcs="Git" />
+  </component>
+</project>
