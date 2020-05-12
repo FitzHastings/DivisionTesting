@@ -1,0 +1,4 @@
+.left-table .scroll-bar:vertical, .center-table .scroll-bar:vertical {
+  -fx-opacity: 0;
+  -fx-padding: -10;
+}

@@ -1,0 +1,5 @@
+.day-column {
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+  -fx-max-width: 5;
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root styleClass="title-border-root-pane" stylesheets="@title-border-pane.css" type="VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane styleClass="title-border-pane" VBox.vgrow="ALWAYS">
+         <top>
+            <HBox styleClass="title-border-label-pane">
+               <children>
+                  <HBox fx:id="titleBorderLabelTool" styleClass="title-border-lable-tool" />
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</fx:root>
