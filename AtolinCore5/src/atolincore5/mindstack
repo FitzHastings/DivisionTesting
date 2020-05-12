@@ -1,0 +1,37 @@
+Changes:
+> Added additional Parameters into Item
+> Updated registerItems function in Device to fit with the new Item
+> Implemented a builder for Item
+> Reworked Server Settings class to include possibility of multiple Connections
+> Added Connection class to represent multiple Connections.
+> Atolin Class now has forced non-insantiability, and is now final.
+> Atolin Class is now the dictionary/utility class, it contains all constants used it atolin library.
+> Added cleanCut function to the server, which should provide a cut under the last line printed, it's currently
+unavaliable to the client, due to being untested.
+> Added a Snatcher class to the device class, that can print out warning and error messages on the Cash Register.
+Snatcher will output the following messages:
+    1) error message if client attemts to print a receipt with incorrect or unsupported type;
+> Added Server Commands:
+    1) Query Info
+    2) Display Last Polled Info
+    3) Help
+> Added More Comprehensive Error Messages in:
+    1) Atolin
+> Added a new Constructor to Receipt that takes type as a parameter.
+> Added Tax Modes to atolin dictionary.
+> Added Agent Types to atolin dictionary.
+> Added Payment Types to atolin dictionary.
+> Added Payment Item Types to atolin dictionary.
+> Moved Receipt Types from Receipt to Atolin.
+> Moved Correction Reason from Receipt to Atolin.
+> Moved Shift States from iDevice to Atolin.
+> Moved TaxTypes from iDevice to Atolin.
+> Enforced naming convension in Atolin.
+> In DeviceServer.java, startCommand replaced Switch Case with if() blocks to avoid code duplication.
+> In Device and iDevice Fixed Spelling of getLineLengthInPixels() function.
+> Fixed a bug with server not interpreting return receipts correctly.
+> Fixed a bug with server ignoring return sell correction receipts.
+> Fixed a bug with server ignoring return buy correction receipts.
+    
+TODO:
+Rework Server Settings and how server goes up.
