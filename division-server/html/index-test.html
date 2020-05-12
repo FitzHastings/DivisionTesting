@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+      .document-block {
+        margin-top: 30px;
+        width: 600px;
+        float: left;
+      }
+      
+      .year-block {
+        font-size: 25pt;
+        text-align: left;
+      }
+      
+      .year, .kvartal, .month {
+        border-bottom: solid thin lightgray;
+        cursor: pointer;
+      }
+      
+      .kvartal-block {
+        text-align: left;
+        font-size: 20pt;
+      }
+      
+      .month-block {
+        font-size: 15pt;
+        text-align: left;
+      }
+      
+      .year-block, .kvartal-block, .month-block {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        color: gray;
+      }
+      
+      .kv {
+        border-top: solid thin lightgray;
+        border-right: solid thin lightgray;
+        border-top-right-radius: 5px;
+        padding: 5px;
+        cursor: pointer;
+      }
+      
+      .kv:hover, .year:hover, .kvartal:hover, .month:hover {
+        border-color: gray;
+        color: darkgray;
+      }
+       
+      .document-table {
+        padding: 20px;
+        width: 100%;
+        text-align: left;
+        font-size: 12pt;
+        border-spacing: 0px;
+      }
+      
+      .document-color {
+        background-color: lavender;
+      }
+      
+      .document-table tr {
+        cursor: pointer;
+      }
+      
+      .document-table tr:hover {
+        opacity: 0.8;
+      }
+      
+      .document-table td {
+        padding: 5px;
+      }
+      
+      .download {
+        float: right;
+        font-size: 15pt;
+        cursor: pointer;
+      }
+      
+      .download:hover {
+        color: darkgray;
+      }
+      
+      div {
+        //border: solid lightgray thin;
+      }
+      
+      .client-block {
+        border-top: solid lightgray thin;
+        border-right: solid lightgray thin;
+        border-radius: 5px;
+        float: left;
+        padding: 20px;
+        margin-right: 50px;
+        margin-top: 30px;
+        margin-left: 10px;
+        font-size: 15pt;
+        font-weight: bold;
+        color: gray;
+        width: 350px;
+      }
+      
+      .client-name {
+        font-size: 20pt;
+        padding-bottom: 30px;
+      }
+      
+      .contract-number {
+        float: left;
+        cursor: pointer;
+        padding-right: 50px;
+        margin-bottom: 20px;
+        border-bottom: solid lightgray thin;
+      }
+      
+      .contact-process {
+        padding-top: 7px;
+        padding-bottom: 7px;
+        padding-left: 5px;
+        margin-left: 15px;
+        font-size: 11pt;
+        font-weight: normal;
+        width: 200px;
+      }
+      
+      .contact-process:hover {
+        text-decoration: underline;
+      }
+      
+      .contract-balance-plus, .contract-balance-minus {
+        float: right;
+      }
+      
+      .contract-balance-plus {
+        color: green;
+      }
+      
+      .contract-balance-minus {
+        color: red;
+      }
+      
+      body {
+        font-family: Arial;
+      }
+      
+      .title {
+        font-size: 34pt;
+        font-weight: bolder;
+        text-align: right;
+        color: gray;
+      }
+      
+      .contact {
+        font-size: 10pt;
+      }
+      
+      .header {
+        border-bottom: solid lightgray thin;
+        width: 80%;
+        font-style: italic;
+      }
+      
+      .terracod {
+        color: #c95628;
+        font-weight: bolder;
+      }
+    </style>
+    
+  </head>
+  <body>
+    
+    <center>
+      <table class="header">
+        <tr>
+          <td class="terracod contact">
+            +7 495 955 25 83<br/>
+            mail@dnc.ru<br/>
+            <a class="terracod" href="http://www.dnc.ru">http://www.dnc.ru</a>
+          </td>
+          <td class="title">
+            <span class="terracod">Г</span>руппа <span class="terracod">к</span>омпаний <span class="terracod">D</span>энси
+          </td>
+        </tr>
+      </table>
+    </center>
+    
+    <div class="client-block">
+      <div class="client-name">ООО "Рога и Копыта"</div>
+      <div class="contract">
+        <div class="contract-number"><table><tr><td style="valign:top"><img src="img/true.png"></td><td>Договор №ЭС-201<br/>sdfsdfg</td></tr></table>
+          <div class="contact-process">Замена ЭКЛЗ по регламенту</div>
+          <div class="contact-process">Регистрация ККТ</div>
+          <div class="contact-process">КТО ККТ V I P</div>
+        </div>
+        <div class="contract-balance-plus">500</div>
+      </div>
+      <div class="contract">
+        <div class="contract-number">Договор №ЭС-202
+          <div class="contact-process">Замена ЭКЛЗ по регламенту</div>
+          <div class="contact-process">Регистрация ККТ</div>
+          <div class="contact-process">КТО ККТ V I P</div>
+        </div>
+        <div class="contract-balance-minus">500</div>
+      </div>
+    </div>
+    
+    <div class="document-block">
+      <div class="year-block"><span class="year">2015 год.</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="kv">1кв</span> <span class="kv">2кв</span> <span class="kv">3кв</span> <span class="kv">4кв</span><div class="download">.zip</div>
+        <div class="kvartal-block"><span class="kvartal">4 квартал 2015г.</span><div class="download">.zip</div>
+          <div class="month-block"><span class="month">ДЕКАБРЬ</span><div class="download">.zip</div>
+            <table class="document-table">
+              <tr class="document-color"><td>Акт(950р.)</td><td>31.12.2015</td><td>просмотр</td><td>скачать</td></tr>
+              <tr><td>Акт(950р.)</td><td>31.12.2015</td><td>просмотр</td><td>скачать</td></tr>
+              <tr class="document-color"><td>Акт(950р.)</td><td>31.12.2015</td><td>просмотр</td><td>скачать</td></tr>
+              <tr><td>Акт(950р.)</td><td>31.12.2015</td><td>просмотр</td><td>скачать</td></tr>
+            </table>
+          </div>
+          <div class="month-block"><span class="month">НОЯБРЬ</span><div class="download">.zip</div></div>
+          <div class="month-block"><span class="month">ОКТЯБРЬ</span><div class="download">.zip</div></div>
+        </div>
+        <div class="kvartal-block"><span class="kvartal">3 квартал 2014г.</span></div>
+        <div class="kvartal-block"><span class="kvartal">2 квартал 2014г.</span></div>
+        <div class="kvartal-block"><span class="kvartal">1 квартал 2014г.</span></div>
+      </div>
+    </div>
+    
+  </body>
+</html>

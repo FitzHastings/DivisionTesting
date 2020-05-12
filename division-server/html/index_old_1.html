@@ -1,0 +1,175 @@
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link media="all" type="text/css" rel="stylesheet" href="css/login.css"/>
+    
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="./js/Client.js"></script>
+    <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css">
+    
+    <script>
+      var client = new Client();
+      //client.init();
+      
+      function validateInn() {
+        if(client.validateInn($("#inn").val())) {
+          $("#enter").removeAttr("disabled");
+          $("#inn").css("border-color","gray");
+        }else {
+          $("#enter").attr("disabled","true");
+          $("#inn").css("border-color","red");
+        }
+      }
+      
+      $(document).ready(function() {
+        $("#inn").change(function() {validateInn();});
+        
+        $('#dateStart').datepicker({
+          monthNamesShort: ["Янв","Фев","Март","Апр","Май","Июнь","Июль","Авг","Сен","Окт","Нояб","Дек"],
+          monthNames     : ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"],
+          dayNamesMin    : ["Сб","Пн","Вт","Ср","Чт","Пт","Вс"],
+          changeMonth: true,
+          changeYear:  true,
+          showOtherMonths: true,
+          numberOfMonths: 3,
+          dateFormat: "dd.mm.yy",
+          onSelect: function(date, datepicker) {
+            if($('#dateStart').datepicker("getDate") > $('#dateEnd').datepicker("getDate")) {
+              $('#dateEnd').datepicker("setDate", date);
+              client.dates.end = date;
+            }
+            client.dates.start = date;
+            client.loadDocuments();
+          }
+        });
+
+        $('#dateEnd').datepicker({
+          monthNamesShort: ["Янв","Фев","Март","Апр","Май","Июнь","Июль","Авг","Сен","Окт","Нояб","Дек"],
+          monthNames     : ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"],
+          dayNamesMin    : ["Сб","Пн","Вт","Ср","Чт","Пт","Вс"],
+          changeMonth: true,
+          changeYear:  true,
+          showOtherMonths: true,
+          numberOfMonths: 3,
+          dateFormat: "dd.mm.yy",
+          onSelect: function(date, datepicker) {
+            if($('#dateEnd').datepicker("getDate") < $('#dateStart').datepicker("getDate")) {
+              $('#dateStart').datepicker("setDate", date);
+               client.dates.start = date;
+            }
+            client.dates.end = date;
+            client.loadDocuments();
+            //getDocuments();
+          }
+        });
+        
+        //Устанавливаю начальную дату
+        var startDate = new Date();
+        startDate.setDate(1);
+        startDate.setMonth(startDate.getMonth()-1);
+        if(startDate.getMonth() === -1) {
+          startDate.setMonth(11);
+          startDate.setYear(startDate.getYear()-1);
+        }
+        
+        $('#dateStart').datepicker("setDate", startDate);
+        client.dates.start = startDate.format();
+        
+        var now = new Date();
+        $('#dateEnd').datepicker("setDate", new Date(now.getFullYear(), now.getMonth(), now.daysInMonth()));
+        client.dates.end = new Date(now.getFullYear(), now.getMonth(), now.daysInMonth()).format();
+        
+        
+        
+        //Проверяю вход в систему
+        $.get(client.url, {action:"login"}, function(response) {
+          //Если клиент не в системе, то выводим форму входа
+          if(response['action'] === "ERROR") {
+            client.logout(function(){validateInn();});
+          }else {//Вход выполнен
+            client.login(response);
+            $("#client-name").html(client.name);
+            client.loadDocuments();
+          }
+        });
+        
+        $("form").submit(function() {
+          $("#error-block").animate({"opacity":"0"});
+          setTimeout(function(){
+            $.get(client.url, {action:"login", inn:$("#inn").val(), password:$("#password").val()}, function(response) {
+              if(response['action'] === "ERROR") {
+                var error = "<span id=error-title>ОШИБКА:</span>";
+                $.each(response['body'], function(i) {
+                  error += "</br>&nbsp;&nbsp;&nbsp;&nbsp;"+response['body'][i];
+                });
+                $("#error-block").html(error);
+                $("#error-block").animate({"opacity":"1"});
+              }else {
+                client.login(response);
+                $("#client-name").html(client.name);
+                client.loadDocuments();
+              }
+            });
+          }, 500);
+          
+          return false;
+        });
+      });
+      
+    </script>
+    
+  </head>
+  
+  <body id="body">
+    
+    <div id="page">
+      <h1 id="client-name"></h1>
+    
+      <div id="dates-block">
+        <table id="dates-table">
+          <tr>
+            <td><input type="text" id="dateStart"><input type="text" id="dateEnd"></td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="documents-block"></div>
+    </div>
+    
+    
+    <!--Форма входа-->
+    <div id="login-block">
+      <table id="error-block">
+        <tr>
+          <td>
+            <div id="error"></div>
+          </td>
+        </tr>
+      </table>
+      
+      <table id="login-main-table">
+        <tr>
+          <td align="center">
+            <center>
+              <form action="lk" method="POST" name="login">
+                <input type="hidden" name="action" value="login"/>
+                <table id="login-sub-table">
+                  <tr><th colspan="2">Вход в личный кабинет клиента</th></tr>
+                  <tr><th colspan="2"></th></tr>
+                  <tr><td>ИНН:</td><td><input name="inn" id="inn"/></td></tr>
+                  <tr><td>пароль:</td><td><input name="password" type="password" id="password"/></td></tr>
+                  <tr><td colspan="2"><a href="#">вспомнить пароль</a>&nbsp;&nbsp;<a href="registrate.html">зарегистрироваться</a></td></tr>
+                  <tr><td colspan="2"><input type="SUBMIT" id="enter" value="вход" disabled/></td></tr>
+                </table>
+              </form>
+            </center>
+          </td>
+        </tr>
+      </table>
+    </div>
+    
+  </body>
+</html>

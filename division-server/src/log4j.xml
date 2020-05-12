@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+  <!--
+  TRACE
+  DEBUG
+  INFO
+  WARN
+  ERROR
+  FATAL
+  -->
+
+  <!--<appender name="EMAIL-APPENDER" class="org.apache.log4j.net.SMTPAppender">
+    <param name="SMTPHost" value="192.168.1.1"/>
+    <param name="To" value="seniorroot@gmail.com"/>
+    <param name="From" value="russo@dnc.ru"/>
+    <param name="Subject" value="[ERROR IN DNC]"/>
+    <param name="Charset" value="UTF-8"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%d{ISO8601}]%n%n%-5p%n%n%c%n%n%m%n%n" />
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="ERROR"/>
+      <param name="LevelMax" value="FATAL"/>
+    </filter>
+  </appender>-->
+
+  <appender name="CONSOLE-DEBUG" class="org.apache.log4j.ConsoleAppender">
+    <param name="target" value="System.out"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{dd.MM.yy HH:mm:ss:SSS} [%5p] %m at %l%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="DEBAG"/>
+      <param name="LevelMax" value="DEBAG"/>
+    </filter>
+  </appender>
+  
+  <appender name="CONSOLE-INFO" class="org.apache.log4j.ConsoleAppender">
+    <param name="target" value="System.out"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{dd.MM.yy HH:mm:ss:SSS} [%5p] %m at %l%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="INFO"/>
+      <param name="LevelMax" value="INFO"/>
+    </filter>
+  </appender>
+
+  <appender name="CONSOLE-WARN" class="org.apache.log4j.ConsoleAppender">
+    <param name="target" value="System.out"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{dd.MM.yy HH:mm:ss:SSS} [%5p] %m at %l%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="WARN"/>
+      <param name="LevelMax" value="WARN"/>
+    </filter>
+  </appender>
+  
+  <appender name="CONSOLE-ERROR" class="org.apache.log4j.ConsoleAppender">
+    <param name="target" value="System.err"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{dd.MM.yy HH:mm:ss:SSS} [%5p] %m at %l%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="ERROR"/>
+    </filter>
+  </appender>
+
+  <appender name="LOG-FILE-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="file" value="logs/log"/>
+    <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{dd.MM.yy HH:mm:ss:SSS} [%5p] %m at %l%n%n"/>
+    </layout>
+  </appender>
+  
+  
+  
+  <logger name="util.Session" additivity="false">
+    <appender-ref ref="CONSOLE-WARN"/>
+    <appender-ref ref="CONSOLE-DEBUG"/>
+    <appender-ref ref="CONSOLE-INFO"/>
+    <appender-ref ref="CONSOLE-ERROR"/>
+    <appender-ref ref="LOG-FILE-APPENDER"/>
+  </logger>
+  
+  <!--<logger name="util.DataBase" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="CONSOLE-WARN"/>
+    <appender-ref ref="CONSOLE-DEBUG"/>
+    <appender-ref ref="LOG-FILE-APPENDER"/>
+  </logger>
+  
+  <logger name="divisionroutermina.Router" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="CONSOLE-WARN"/>
+    <appender-ref ref="CONSOLE-DEBUG"/>
+    <appender-ref ref="LOG-FILE-APPENDER"/>
+  </logger>-->
+  
+  <!--<logger name="util.DataBase" additivity="false">
+    <level value="INFO"/>
+    <appender-ref ref="CONSOLE-WARN"/>
+    <appender-ref ref="CONSOLE-DEBUG"/>
+    <appender-ref ref="LOG-FILE-APPENDER"/>
+  </logger>-->
+
+  <root>
+    <!--<appender-ref ref="CONSOLE-DEBUG"/>-->
+    <appender-ref ref="CONSOLE-INFO"/>
+    <appender-ref ref="CONSOLE-ERROR"/>
+    <appender-ref ref="LOG-FILE-APPENDER"/>
+  </root>
+</log4j:configuration>

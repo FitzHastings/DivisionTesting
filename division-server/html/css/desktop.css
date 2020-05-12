@@ -1,0 +1,128 @@
+.request-tool-box {
+  margin: 5px 0px 10px 0px;
+  height: 30px;
+}
+
+.creale-request {
+  clear: both;
+  float: left;
+  cursor:pointer;
+  font-weight: bold;
+  border: 1px solid #C1C1C1;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: beige;
+}
+
+.creale-request:hover {
+  background-color: bisque;
+}
+
+.request-block {
+  width: 95%;
+}
+
+.request-box {
+  float: right;
+  width: 48%;
+  padding: 10px;
+}
+
+.reason {
+  float: left;
+  border-radius: 5px;
+  width: 48%;
+  height: 100%;
+  padding: 10px;
+}
+
+.reason-title {
+  float: right;
+  clear: both;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #C1C1C1;
+  background-color: antiquewhite;
+  margin: 10px;
+  font-size: 15pt;
+}
+
+.comments-title {
+  float: right;
+  clear: both;
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+}
+
+.equipments-title {
+  clear: both;
+  text-align: center;
+  padding: 5px;
+}
+
+.comment-box {
+  float: right;
+  clear: both;
+  width:  95%;
+  height: 300px;
+  border: 1px solid #C1C1C1;
+  border-radius: 5px;
+  overflow-y: auto;
+  padding: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: azure;
+}
+
+.new-comment-box {
+  clear: both;
+  float: right;
+  border-radius: 5px;
+  border: 1px solid #C1C1C1;
+  min-width:  350px;
+  min-height: 80px;
+  resize: none;
+  padding: 10px;
+}
+
+.comment-button {
+  clear: both;
+  float: right;
+}
+
+
+
+.comment-date {
+  font-size: 10pt;
+  padding-top: 10px;
+  margin-top: 20px;
+  clear: both;
+}
+
+.comment {
+  clear: both;
+  max-width: 350px;
+  min-width: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #C1C1C1;
+}
+
+.org-comment-date {
+  float: left;
+}
+
+.org-comment {
+  float: left;
+  background-color: antiquewhite;
+}
+
+.my-comment-date {
+  float: right;
+}
+
+.my-comment {
+  float: right;
+  background-color: navajowhite;
+}
