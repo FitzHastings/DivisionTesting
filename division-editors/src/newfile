@@ -1,0 +1,61 @@
+﻿<?php 
+// если была нажата кнопка "Отправить" 
+if($_POST) {
+        
+		// Для отправки HTML-письма должен быть установлен заголовок Content-type
+		$headers  = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+
+		// Дополнительные заголовки
+		$headers .= 'From: fullmarketing.ru <noreply@fullmarketing.ru>' . "\r\n";
+				
+        // $to - кому отправляем 
+        //$to = 'kukhtina@gmail.com'; 
+$to = 'seniorroot@gmail.com'; 
+        
+		// Заголовок письма
+		$title = 'Заявка с сайта fullmarketing.ru'; 
+		
+		//Формируем письмо
+		$mess =  '<html>
+<head>
+  <title>'.$title.'</title>
+</head>
+<body>
+  <h3>'.$title.'</h3>
+  <table>
+    <tr>
+      <td>Имя: </td><td>'. htmlspecialchars(trim($_POST['first_name'])) .'</td>
+    </tr>
+	<tr>
+      <td>Телефон: </td><td>' . htmlspecialchars(trim($_POST['phone'])) . '</td>
+    </tr>
+	<tr>
+      <td>utm_source</td><td>' . htmlspecialchars(trim($_POST['utm_source'])) . '</td>
+    </tr>
+	<tr>
+      <td>utm_medium</td><td>'.  htmlspecialchars(trim($_POST['utm_medium'])) . '</td>
+    </tr>
+	<tr>
+      <td>utm_campaign</td><td>'. htmlspecialchars(trim($_POST['utm_campaign'])) . '</td>
+    </tr>
+	<tr>
+      <td>utm_term</td><td>'. htmlspecialchars(trim($_POST['utm_term'])) . '</td>
+    </tr>
+	<tr>
+      <td>utm_content</td><td>' . htmlspecialchars(trim($_POST['utm_content'])) . '</td>
+    </tr>
+</table>
+</body>
+</html>';
+		
+		
+        // функция, которая отправляет наше письмо
+        if(mail($to, $title, $mess, $headers)){
+			header("Location: /thankyou.html");
+		}
+		else{
+			echo('Произошла ошибка');	
+		}
+} 
+?>
